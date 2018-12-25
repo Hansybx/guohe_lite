@@ -13,6 +13,12 @@ const get_exercise = 'https://guohe3.com/vpnRun'
 //获取学生俱乐部信息
 const get_sport = 'https://guohe3.com/vpnSport'
 
+//获取学生成绩
+const get_grade ='https://guohe3.com/api/score'
+
+//获取学生绩点
+const get_gpa ='https://guohe3.com/api/gradePoint'
+
 //首页item数组的信息
 const core = [
   [{
@@ -174,5 +180,9 @@ module.exports = {
   //获取学生早操信息
   EXERCISE: get_exercise,
   //获取学生俱乐部信息
-  CLUB: get_sport
+  CLUB: get_sport,
+  //获取绩点信息
+  GPA:get_gpa,
+  //获取成绩信息
+  GRADE:get_grade
 };

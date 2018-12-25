@@ -62,15 +62,7 @@ Page({
     //获取日知录信息
     this.getOneContent()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function(e) {
-    // 使用 wx.createAudioContext 获取 audio 上下文 context
-    this.audioCtx = wx.createAudioContext('myAudio')
-  },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */

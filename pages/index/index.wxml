@@ -65,11 +65,19 @@
     <view>
       <view>
         <view style="text-align: center">
-          <view style="text-align:center;font-size:40rpx;margin:30rpx;color:grey;font-family:Courier New">{{oneDate}}</view>
+          <view style="text-align:center;font-size:40rpx;margin:30rpx;color:grey;font-family:Courier New">
+            <text selectable='true'>{{oneDate}}</text>
+          </view>
           <image style="background-color: #eeeeee;" mode="scaleToFill" src="{{oneImg}}" bindtap='imgPreview'></image>
-          <view style="text-align:center;font-size:28rpx;color:grey;margin:20rpx;">{{oneImgAuthor}}</view>
-          <view style="text-align:center;font-size:28rpx;color:grey;margin:20rpx;">{{oneWord}}</view>
-          <view style="text-align:center;font-size:22rpx;color:grey;margin:30rpx">{{oneWordFrom}}</view>
+          <view style="text-align:center;font-size:28rpx;color:grey;margin:20rpx;">
+            <text selectable='true'>{{oneImgAuthor}}</text>
+          </view>
+          <view style="text-align:center;font-size:28rpx;color:grey;margin:20rpx;">
+            <text selectable='true'>{{oneWord}}</text>
+          </view>
+          <view style="text-align:center;font-size:22rpx;color:grey;margin:30rpx">
+            <text selectable='true'>{{oneWordFrom}}</text>
+          </view>
         </view>
       </view>
 
