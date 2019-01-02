@@ -11,8 +11,6 @@ function _get( url, success, fail ) {
             fail( res );
         }
     });
-
-    
 }
 
 /**

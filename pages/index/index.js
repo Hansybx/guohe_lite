@@ -176,10 +176,11 @@ Page({
     if (res.data.code == 200) {
       //全部校历信息
       var info = res.data.info;
+      console.log(info)
       //该学生全部学年信息
-      var all_year = info.all_year;
+      var all_year = info['allYear'];
       //当前周次
-      var weekNum = info.weekNum;
+      var weekNum = info['weekNum'];
       try {
         wx.setStorageSync('all_year', all_year)
         if (weekNum > 0 && weekNum < 21)
@@ -200,6 +201,7 @@ Page({
   //点击首页的item跳转到相应的页面
   navigateTo: function(event) {
     var id = event.currentTarget.dataset.info.id
+    var disabled = event.currentTarget.dataset.info.disabled
     if (id == 'guide') {
       //如果点击的是自助导览，跳转至“江科大校园导览”小程序
       wx.navigateToMiniProgram({
@@ -212,9 +214,16 @@ Page({
         }
       })
     } else {
-      wx.navigateTo({
-        url: '/pages/core/' + id + '/' + id
-      })
+      if(disabled){
+        wx.showModal({
+          title: '抱歉',
+          content: '为了更好的用户体验，该功能正在重构，敬请期待！',
+        })
+      }else{
+        wx.navigateTo({
+          url: '/pages/core/' + id + '/' + id
+        })
+      }
     }
   },
 

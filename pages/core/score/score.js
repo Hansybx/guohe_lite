@@ -2,6 +2,9 @@
 
 var Constant = require('../../../utils/constant.js')
 var HttpUtils = require('../../../utils/http-utils.js')
+var toastr = require('../../../utils/toastr-wxapp.js');
+var wxCharts = require('../../../utils/wxcharts-min.js');
+
 
 Page({
   /**
@@ -65,11 +68,10 @@ Page({
         )
       } else {
         //没有数据缓存信息
-        wx.showToast({
+        toastr.error({
           title: '系统异常',
-          icon: 'loading',
-          duration: 2000
-        })
+          duration: 1000,
+        });
       }
     } catch (e) {
       // Do something when catch error
@@ -100,22 +102,20 @@ Page({
         })
       }
     } else {
-      wx.showToast({
+      toastr.error({
         title: '系统异常',
-        icon: 'loading',
-        duration: 2000
-      })
+        duration: 1000,
+      });
     }
     console.log(res)
   },
 
   //获取成绩信息失败的回调函数
   getScoreFail: function() {
-    wx.showToast({
+    toastr.error({
       title: '系统异常',
-      icon: 'loading',
-      duration: 2000
-    })
+      duration: 1000,
+    });
   },
 
   //获取绩点
@@ -170,7 +170,6 @@ Page({
           point_list.push(info[i].point)
         }
 
-        var wxCharts = require('../../../utils/wxcharts-min.js');
         new wxCharts({
           canvasId: 'point',
           type: 'line',
@@ -220,11 +219,10 @@ Page({
 
   //获取绩点失败的回调函数
   getGPAFail: function() {
-    wx.showToast({
+    toastr.error({
       title: '系统异常',
-      icon: 'loading',
-      duration: 2000
-    })
+      duration: 1000,
+    });
   },
 
   bindPickerChange: function(e) {
