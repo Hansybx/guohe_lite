@@ -23,7 +23,7 @@ const get_grade ='https://guohe3.com/api/student/getScoreAll'
 const get_gpa ='https://guohe3.com/api/student/getJidian'
 
 //反馈接口
-const feedback ='https://guohe3.com/feedback/create'
+const feedback ='https://guohe3.com/api/feedback/create'
 
 //首页item数组的信息
 const core = [

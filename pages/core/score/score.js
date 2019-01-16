@@ -36,13 +36,13 @@ Page({
       this.setData({
         windowWidth: windowWidth
       })
+      //获取成绩
+      this.getScore()
+      //获取绩点
+      this.getGPA()
     } catch (e) {
       // do something when get system info failed
     }
-    //获取成绩
-    this.getScore()
-    //获取绩点
-    this.getGPA()
   },
 
   //获取成绩
@@ -81,10 +81,12 @@ Page({
 
   //获取成绩信息成功的回调函数
   getScoreSuccess: function(res) {
+    console.log('getScoreSuccess: ' + res)
     var status = res.statusCode
     if (status == 200) {
       var code = res.data.code
       var mess = res.data.msg
+      console.log(res.data.info)
       if (code == 200) {
         this.setData({
           scores: res.data.info,
@@ -107,7 +109,6 @@ Page({
         duration: 1000,
       });
     }
-    console.log(res)
   },
 
   //获取成绩信息失败的回调函数
@@ -225,21 +226,23 @@ Page({
     });
   },
 
+  //选择学期时的回掉函数
   bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     if (e.detail.value == '0') {
       this.setData({
         change_scores: this.data.scores,
-        currentSemester: "所有学期"
-      })
-      this.setData({
+        currentSemester: '所有学期',
         flag_choose: 'hide'
       })
     } else {
       var temp = this.data.scores
-      var result = new Array()
+      var result = []
+      var years = this.data.grade_years
       for (var i = 0; i < temp.length; i++) {
-        if (temp[i].start_semester == this.data.grade_years[e.detail.value]) {
+        //根据学年信息筛选
+        if (temp[i]['startSemester'].indexOf(years[e.detail.value]) >= 0) {
+          console.log(temp[i]['startSemester'])
           result.push(temp[i])
         }
       }
@@ -253,15 +256,14 @@ Page({
       var name_list = new Array()
       var score_list = new Array()
       for (var i = 1; i < after_choose_scores.length; i++) {
-        var subjectName = after_choose_scores[i].course_name.substring(0, 5)
-        var subjectScore = after_choose_scores[i].score
-        var subjectMethod = after_choose_scores[i].examination_method
+        var subjectName = after_choose_scores[i]['courseName'].substring(0, 5)
+        var subjectScore = after_choose_scores[i]['score']
+        var subjectMethod = after_choose_scores[i]['examinationMethod']
         if (subjectScore % 1 === 0 && subjectMethod != '') {
           name_list.push(subjectName)
           score_list.push(subjectScore)
         }
       }
-      var wxCharts = require('../../../utils/wxcharts-min.js');
       var that = this
       new wxCharts({
         canvasId: 'score',
