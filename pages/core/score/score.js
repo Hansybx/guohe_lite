@@ -166,6 +166,7 @@ Page({
         var info = res.data.info
         var year_list = new Array()
         var point_list = new Array()
+        console.log(point_list)
         for (var i = 1; i < info.length; i++) {
           year_list.push(info[i].year)
           point_list.push(info[i].point)

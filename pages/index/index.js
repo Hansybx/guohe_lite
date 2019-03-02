@@ -62,7 +62,7 @@ Page({
     //获取日知录信息
     this.getOneContent()
   },
-  
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -214,12 +214,12 @@ Page({
         }
       })
     } else {
-      if(disabled){
+      if (disabled) {
         wx.showModal({
           title: '抱歉',
           content: '为了更好的用户体验，该功能正在重构，敬请期待！',
         })
-      }else{
+      } else {
         wx.navigateTo({
           url: '/pages/core/' + id + '/' + id
         })
@@ -229,8 +229,26 @@ Page({
 
   //初始化首页头部内容
   initHeader: function() {
+    var that = this
+    const query = Bmob.Query("header");
+    var headers = new Array();
+    query.find().then(res => {
+      for (var i = 0; i < res.length; i++) {
+        var obj = new Object();
+        obj.name = res[i]['name']
+        obj.id = res[i]['id']
+        obj.enable = res[i]['enable']
+        obj.order=res[i]['order']
+        headers.push(obj)
+      }
+      that.setData({
+        //根据order的次序排序
+        cores: headers.sort(util.compareByKeys('order')),
+      })
+    });
+
     this.setData({
-      cores: Constant.CORE,
+      // cores: Constant.CORE,
       card: Constant.CARD
     })
   },

@@ -29,52 +29,38 @@ const feedback ='https://guohe3.com/api/feedback/create'
 const core = [
   [{
       id: 'kb',
-      name: '课表',
-      disabled: false,
-      teacher_disabled: false,
-      offline_disabled: false
+      name: '表',
+      enable:true
     },
     {
       id: 'score',
-      name: '成绩',
-      disabled: false,
-      teacher_disabled: true,
-      offline_disabled: false
+      name: '分',
+      enable:true
     },
     {
       id: 'classroom',
-      name: '空教室',
-      disabled: true,
-      teacher_disabled: false,
-      offline_disabled: true
+      name: '屋',
+      enable:true
     },
     {
       id: 'library',
-      name: '馆藏',
-      disabled: true,
-      teacher_disabled: false,
-      offline_disabled: false
+      name: '书',
+      enable: true,
     },
     {
       id: 'bus',
-      name: '校车',
-      disabled: false,
-      teacher_disabled: true,
-      offline_disabled: false
+      name: '车',
+      enable: true
     },
     {
       id: 'sport',
-      name: '体育',
-      disabled: true,
-      teacher_disabled: true,
-      offline_disabled: false
+      name: '体',
+      enable: true
     },
     {
       id: 'guide',
-      name: '校园导览',
-      disabled: false,
-      teacher_disabled: true,
-      offline_disabled: false
+      name: '图',
+      enable: true
     }
   ]
 ]
