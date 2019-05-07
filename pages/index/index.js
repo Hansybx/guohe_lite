@@ -133,6 +133,7 @@ Page({
 
   //获取校历信息
   getXiaoli: function() {
+    console.log('获取校历信息')
     var that = this
     try {
       //查看是否已经登录
@@ -145,6 +146,7 @@ Page({
           'username': username,
           'password': password
         }
+        console.log(param)
         //发送获取学生校历信息的请求
         HttpUtils._post(
           Constant.XIAO_LI,
@@ -167,6 +169,8 @@ Page({
 
   //获取校历成功的回掉函数
   getXiaoliSuccess: function(res) {
+    console.log('获取校历成功的回掉函数:')
+    console.log(res)
     if (res.data.code == 500) {
       wx.showToast({
         title: '教务系统异常',
@@ -195,7 +199,7 @@ Page({
 
   //获取校历失败的回掉函数
   getXiaoliFail: function(e) {
-    console.log(e)
+    console.log('获取校历失败的回掉函数：'+e)
   },
 
   //点击首页的item跳转到相应的页面
@@ -296,7 +300,7 @@ Page({
         }
       }
     } catch (e) {
-      console.log(e)
+      console.log('今日课表获取失败：'+e)
     }
     if (todayKbList.length > 0) {
       this.setData({

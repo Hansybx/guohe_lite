@@ -40,6 +40,10 @@ Page({
     var objData = e.detail.value;
     //如果账号和密码都不为空
     if (objData.username && objData.password) {
+      this.setData({
+        username: objData.username,
+        password: objData.password
+      })
       var param = {
         'username': objData.username,
         'password': objData.password
@@ -73,6 +77,7 @@ Page({
     if (res.data.code == 200) {
       var result = res.data.info
       console.log(result)
+      result['password'] = this.data.password
       wx.setStorage({
         key: "account",
         data: result

@@ -95,12 +95,14 @@ Page({
         wx.showLoading({
           title: '正在获取课表，请稍后',
         })
+        var year = this.data.yearList[thisYearIndex]
+        console.log(year)
         var param = {
           'username': account.username,
           'password': account.password,
-          'semester': this.data.yearList[thisYearIndex]
+          'semester': year
         }
-        console.log(param)
+        var that = this
         HttpUtils._post(
           Constant.KB,
           param,
@@ -116,7 +118,8 @@ Page({
 
   //获取课表成功的回调函数
   getKbInfoSuccess: function(res) {
-    console.log(res)
+    console.log('获取课表成功的回调函数')
+    console.log(res.data)
     if (res.data.code = 200) {
       this.handleKbInfo(res.data.info)
     }

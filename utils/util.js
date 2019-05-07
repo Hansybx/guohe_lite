@@ -197,7 +197,7 @@ function showDataUtil(info, semester, week, currentTab, that) {
 //获取one的图文信息
 function getOneContent(callback) {
   wx.request({
-    url: 'https://api.bzqll.com/one/day',
+    url: 'https://api.itooi.cn/one/day',
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
