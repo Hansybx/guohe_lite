@@ -1,5 +1,5 @@
 //学生登陆
-const login ='https://guohe3.com/api/student/login'
+const login = 'https://guohe3.com/api/student/login'
 
 //查询学生校历信息
 const xiaoli = 'https://guohe3.com/api/justInfo/getSchoolCalendar'
@@ -17,53 +17,52 @@ const get_exercise = 'https://guohe3.com/vpnRun'
 const get_sport = 'https://guohe3.com/vpnSport'
 
 //获取学生成绩
-const get_grade ='https://guohe3.com/api/student/getScoreAll'
+const get_grade = 'https://guohe3.com/api/student/getScoreAll'
 
 //获取学生绩点
-const get_gpa ='https://guohe3.com/api/student/getJidian'
+const get_gpa = 'https://guohe3.com/api/student/getJidian'
 
 //反馈接口
-const feedback ='https://guohe3.com/api/feedback/create'
+const feedback = 'https://guohe3.com/api/feedback/create'
 
 //首页item数组的信息
-const core = [
-  [{
-      id: 'kb',
-      name: '表',
-      enable:true
-    },
-    {
-      id: 'score',
-      name: '分',
-      enable:true
-    },
-    {
-      id: 'classroom',
-      name: '屋',
-      enable:true
-    },
-    {
-      id: 'library',
-      name: '书',
-      enable: true,
-    },
-    {
-      id: 'bus',
-      name: '车',
-      enable: true
-    },
-    {
-      id: 'sport',
-      name: '体',
-      enable: true
-    },
-    {
-      id: 'guide',
-      name: '图',
-      enable: true
-    }
-  ]
+const core = [{
+    id: 'kb',
+    name: '表',
+    enable: true
+  },
+  {
+    id: 'score',
+    name: '分',
+    enable: true
+  },
+  {
+    id: 'classroom',
+    name: '屋',
+    enable: true
+  },
+  {
+    id: 'library',
+    name: '书',
+    enable: true,
+  },
+  {
+    id: 'bus',
+    name: '车',
+    enable: true
+  },
+  {
+    id: 'sport',
+    name: '体',
+    enable: true
+  },
+  {
+    id: 'guide',
+    name: '图',
+    enable: true
+  }
 ]
+
 
 const card = {
   'kb': {
@@ -162,7 +161,7 @@ const card = {
 
 module.exports = {
   //登陆
-  LOGIN:login,
+  LOGIN: login,
   //获取校历
   XIAO_LI: xiaoli,
   //获取课表
@@ -176,9 +175,9 @@ module.exports = {
   //获取学生俱乐部信息
   CLUB: get_sport,
   //获取绩点信息
-  GPA:get_gpa,
+  GPA: get_gpa,
   //获取成绩信息
-  GRADE:get_grade,
+  GRADE: get_grade,
   //反馈
-  FEEDBACK:feedback
+  FEEDBACK: feedback
 };

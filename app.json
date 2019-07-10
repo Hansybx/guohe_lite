@@ -58,5 +58,6 @@
         "selectedIconPath": "images/index/i_click.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

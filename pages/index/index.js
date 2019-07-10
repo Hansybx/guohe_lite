@@ -121,12 +121,13 @@ Page({
   getOneContent: function() {
     var that = this
     util.getOneContent(function(data) {
+      var data=data.data
       that.setData({
-        oneImg: data.pic,
-        oneWord: data.text,
-        oneWordFrom: data.origin,
-        oneDate: data.time.split(' ')[0].replace(/\-/g, "\/"),
-        oneImgAuthor: data.type + ' | ' + data.pic_origin
+        oneImg: data.img_url,
+        oneWord: data.forward,
+        oneWordFrom: data.words_info,
+        oneDate: data.post_date.split(' ')[0].replace(/\-/g, "\/"),
+        oneImgAuthor: data.title + ' | ' + data.pic_info
       })
     })
   },

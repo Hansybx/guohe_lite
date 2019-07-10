@@ -197,7 +197,7 @@ function showDataUtil(info, semester, week, currentTab, that) {
 //获取one的图文信息
 function getOneContent(callback) {
   wx.request({
-    url: 'https://api.itooi.cn/one/day',
+    url: 'https://v1.itooi.cn/one/day',
     header: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
@@ -230,17 +230,14 @@ function today_dataIsNull(data) {
 
 // 指定排序的比较函数
 function compare(property) {
-  return function (obj1, obj2) {
+  return function(obj1, obj2) {
     var value1 = obj1[property];
     var value2 = obj2[property];
-    return value1 - value2;     // 升序
+    return value1 - value2; // 升序
   }
 }
 
 module.exports = {
-  // getToplistInfo: getToplistInfo,
-  // getSongInfo: getSongInfo,
-  // GetRandomNum: GetRandomNum,
   today_dataIsNull: today_dataIsNull,
   formatTime: formatTime,
   formatDate: formatDate,

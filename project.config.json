@@ -11,6 +11,8 @@
 	"libVersion": "2.4.2",
 	"appid": "wx5b6154ad63c373f5",
 	"projectname": "guohe",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
