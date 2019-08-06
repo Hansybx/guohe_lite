@@ -32,7 +32,18 @@ Page({
     oneWord: '',
     oneWordFrom: '',
     oneDate: '',
-    oneImgAuthor: ''
+    oneImgAuthor: '',
+    // 顶部活动预告
+    activities: [{
+        url: 'https://ytools.xyz/1563601360904.jpg'
+      },
+      {
+        url: 'https://ytools.xyz/1234_abcd_2019071521512553.jpg'
+      },
+      {
+        url: 'https://ytools.xyz/1562404410698.jpg'
+      }
+    ]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -121,7 +132,7 @@ Page({
   getOneContent: function() {
     var that = this
     util.getOneContent(function(data) {
-      var data=data.data
+      var data = data.data
       that.setData({
         oneImg: data.img_url,
         oneWord: data.forward,
@@ -200,29 +211,22 @@ Page({
 
   //获取校历失败的回掉函数
   getXiaoliFail: function(e) {
-    console.log('获取校历失败的回掉函数：'+e)
+    console.log('获取校历失败的回掉函数：' + e)
   },
 
   //点击首页的item跳转到相应的页面
   navigateTo: function(event) {
-    var id = event.currentTarget.dataset.info.id
-    var disabled = event.currentTarget.dataset.info.disabled
-    if (id == 'guide') {
-      //如果点击的是自助导览，跳转至“江科大校园导览”小程序
-      wx.navigateToMiniProgram({
-        appId: 'wxbd0a184ead21796e',
-        path: 'pages/index/index',
-        envVersion: 'release',
-        success(res) {
-          // 打开成功
-          console.log(res)
-        }
-      })
+    var info = event.currentTarget.dataset.info
+    console.log(info)
+    var id = info.id
+    var enable = info.enable
+    if (id == 'kb') {
+      this.showAllKb()
     } else {
-      if (disabled) {
+      if (!enable) {
         wx.showModal({
-          title: '抱歉',
-          content: '为了更好的用户体验，该功能正在重构，敬请期待！',
+          title: '👷‍♀️',
+          content: '前方施工，敬请期待！',
         })
       } else {
         wx.navigateTo({
@@ -242,8 +246,11 @@ Page({
         var obj = new Object();
         obj.name = res[i]['name']
         obj.id = res[i]['id']
+        obj.order = res[i]['order']
+        // 判断是否显示在前端
+        obj.isShow = res[i]['isShow']
+        // 判断能否使用
         obj.enable = res[i]['enable']
-        obj.order=res[i]['order']
         headers.push(obj)
       }
       that.setData({
@@ -301,7 +308,7 @@ Page({
         }
       }
     } catch (e) {
-      console.log('今日课表获取失败：'+e)
+      console.log('今日课表获取失败：' + e)
     }
     if (todayKbList.length > 0) {
       this.setData({
@@ -321,5 +328,18 @@ Page({
         urls: urls // 需要预览的图片http链接列表
       })
     }
+  },
+
+  //显示完整课表
+  showAllKb: function() {
+    wx.switchTab({
+      url: '../core/kb/kb',
+    })
+  },
+
+  // 显示活动信息
+  showActInfo: function(event) {
+    var info = event.currentTarget.dataset.info
+    console.log(info)
   }
 })

@@ -1,8 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/daily/daily",
-    "pages/daily/content/content",
     "pages/login/login",
     "pages/logs/logs",
     "pages/core/sport/sport",
@@ -12,7 +10,6 @@
     "pages/core/person/person",
     "pages/core/person/about/about",
     "pages/core/community/community",
-    "pages/core/table/table",
     "pages/core/score/score",
     "pages/core/person/feedback/feedback",
     "pages/core/person/switch/switch",
@@ -20,7 +17,9 @@
     "pages/core/bus/bus",
     "pages/core/prize/index/index",
     "pages/core/prize/detail/detail",
-    "pages/core/kb/kb"
+    "pages/core/kb/kb",
+    "pages/core/love/love",
+    "pages/core/news/news"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,16 +39,16 @@
     "backgroundColor": "#FFFFFF",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "今日",
-        "iconPath": "images/index/sun.png",
-        "selectedIconPath": "images/index/sun_click.png"
-      },
-      {
-        "pagePath": "pages/daily/daily",
-        "text": "日报",
+        "pagePath": "pages/core/kb/kb",
+        "text": "课表",
         "iconPath": "images/index/daily.png",
         "selectedIconPath": "images/index/daily_click.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "images/index/sun.png",
+        "selectedIconPath": "images/index/sun_click.png"
       },
       {
         "pagePath": "pages/core/person/person",

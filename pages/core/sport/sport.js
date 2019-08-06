@@ -223,6 +223,7 @@ Page({
     this.setData({
       isLoad: false
     })
+    wx.navigateBack();
   },
   /**
    * 对话框确认按钮点击事件

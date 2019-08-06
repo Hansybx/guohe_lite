@@ -1,61 +1,80 @@
 <!--index.wxml-->
 
+<!-- 活动预告 -->
+<!-- <swiper class="main-swpier" indicator-dots="true" autoplay="true" indicator-active-color="#73b4ef">
+  <block wx:for="{{activities}}" wx:key="index" wx:for-index="index">
+    <swiper-item>
+      <image src="{{item.url}}" mode="aspectFill" data-info='{{item}}' bindtap='showActInfo' />
+    </swiper-item>
+  </block>
+</swiper> -->
+
 <!--功能导航-->
-<swiper class="main-swpier" indicator-dots="true" indicator-active-color="#73b4ef">
-  <swiper-item class="main-core">
-    <block wx:for="{{cores}}" wx:key="id">
-      <view class='main-core-item' bindtap='navigateTo' data-info='{{item}}' wx:if="{{item.enable}}">
-        <image class="core-item-icon" src="/images/core/{{item.id}}.png"></image>
-        <text class="core-item-name">{{item.name}}</text>
-      </view>
-    </block>
-  </swiper-item>
-</swiper>
+<view class="main-card">
+  <view class="main-card-item">
+    <view class="card-item-hd">
+      <image class="card-item-icon" src="/images/core/school.png"></image>
+      <text class="card-item-name">校园</text>
+    </view>
+    <view class='main-core'>
+      <block wx:for="{{cores}}" wx:key="id">
+        <view class='main-core-item' bindtap='navigateTo' data-info='{{item}}' wx:if="{{item.isShow}}">
+          <image class="core-item-icon" src="/images/core/{{item.id}}.png"></image>
+          <text class="core-item-name">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
 
 <!--卡片列表-->
 <view class="main-card">
+  <!-- 今日课表 -->
+  <view class="main-card-item" id="kb" wx:if="{{card.kb.show}}" bindtap='showAllKb'>
 
-  <!--今日课表-->
-  <view class="main-card-item" id="kb" wx:if="{{card.kb.show}}">
-    <navigator url="/pages/core/kb/kb">
-      <view class="card-item-hd">
-        <image class="card-item-icon" src="/images/core/table.png"></image>
-        <text class="card-item-name">今日</text>
-      </view>
-      <view wx:if="{{!isTodayKb}}" class="card-item-bd kb-nothing">
-        <text wx:if="{{!isTodayKb}}">今天居然很轻松~😆</text>
-      </view>
+    <view class="card-item-hd">
+      <image class="card-item-icon" src="/images/core/table.png"></image>
+      <text class="card-item-name">今日课表</text>
+    </view>
+    <view wx:if="{{!isTodayKb}}" class="card-item-bd kb-nothing">
+      <text wx:if="{{!isTodayKb}}">今天居然很轻松~😆</text>
+    </view>
 
-      <view wx:else class="card-item-bd">
-        <view class="kb-item" wx:for="{{todayKb}}" wx:key="when">
-          <view class='kb-item-left'>
-            <text class="kb-item-when">{{item.when}}</text>
-          </view>
+    <view wx:else class="card-item-bd">
+      <view class="kb-item" wx:for="{{todayKb}}" wx:key="when">
+        <view class='kb-item-left'>
+          <text class="kb-item-when">{{item.when}}</text>
+        </view>
 
-          <view class="kb-item-right">
-            <text class="kb-item-what">{{item.what}}</text>
-            <text class="kb-item-where">{{item.where}}</text>
-          </view>
+        <view class="kb-item-right">
+          <text class="kb-item-what">{{item.what}}</text>
+          <text class="kb-item-where">{{item.where}}</text>
         </view>
       </view>
+    </view>
+    <view class="kb-open">
+      <text>查看完整课表</text>
+    </view>
+
+  </view>
+  <!-- 表白墙 -->
+  <view class="main-card-item" id="toast">
+    <navigator url="/pages/core/love/love">
+      <view class="card-item-hd">
+        <image class="card-item-icon" src="/images/core/love.png"></image>
+        <text class="card-item-name">表白墙</text>
+      </view>
+      <view class='toast'>
+        {{toast}}
+      </view>
       <view class="kb-open">
-        <text>查看完整课表</text>
+        <text>进入表白墙</text>
       </view>
     </navigator>
   </view>
-  <!-- 大事 -->
-  <view class="main-card-item" id="toast" wx:if="{{news_flag}}">
-    <view class="card-item-hd">
-      <image class="card-item-icon" src="/images/index/toast.png"></image>
-      <text class="card-item-name">大事儿</text>
-    </view>
-    <view class='toast'>
-      {{toast}}
-    </view>
-  </view>
 
   <!-- 日知录 -->
-  <view class="main-card-item" id="music" wx:if="{{music_flag}}">
+  <view class="main-card-item" id="music">
     <view class="card-item-hd">
       <image class="card-item-icon" src="/images/index/one.png"></image>
       <text class="card-item-name">日知录</text>
@@ -95,6 +114,6 @@
     </view>
   </view>
 
-  <official-account></official-account>
-
 </view>
+
+<official-account></official-account>

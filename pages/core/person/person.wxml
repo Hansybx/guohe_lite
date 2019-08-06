@@ -17,13 +17,13 @@
               </view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
             </navigator>
-            <navigator url="/pages/core/person/switch/switch" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-              <!-- <view class="weui-cell__hd"><image src="/images/core/cet.png" style="width: 20px;height: 20px;margin-right: 5px" /></view> -->
+            <!-- <navigator url="/pages/core/person/switch/switch" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd"><image src="/images/core/cet.png" style="width: 20px;height: 20px;margin-right: 5px" /></view>
               <view class="weui-cell__bd weui-cell_primary">
                 <view class='card-item-font'>卡片开关</view>
               </view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
-            </navigator>
+            </navigator> -->
             <navigator url="/pages/core/person/log/log" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
               <!-- <view class="weui-cell__hd"><image src="/images/core/cet.png" style="width: 20px;height: 20px;margin-right: 5px" /></view> -->
               <view class="weui-cell__bd weui-cell_primary">
@@ -38,6 +38,13 @@
               </view>
               <view class="weui-cell__ft weui-cell__ft_in-access"></view>
             </navigator>
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='showAd'>
+              <view class="weui-cell__bd weui-cell_primary">
+                <view class='card-item-font'>支持我们</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+
           </view>
         </view>
       </view>
@@ -88,6 +95,6 @@
 
   <button bindtap='changeAccount'>切换账号</button>
 
-<ad unit-id="adunit-0a8bec84c0580aff"></ad>
+  <ad unit-id="adunit-0a8bec84c0580aff"></ad>
 
 </view>
