@@ -1,11 +1,13 @@
 //学生登陆
 const login = 'https://guohe3.com/api/student/login'
+// const login = 'http://stu.guohe3.com/api/v1/stu/login'
 
 //查询学生校历信息
 const xiaoli = 'https://guohe3.com/api/justInfo/getSchoolCalendar'
 
 //查询学生的所有课表
 const kb = 'https://guohe3.com/api/student/getSchoolTimetable'
+// const kb = 'http://stu.guohe3.com/api/v1/stu/class/schedule'
 
 //获取云端推送的消息
 const get_mess = 'https://guohe3.com/getToast'
