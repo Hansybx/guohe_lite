@@ -40,6 +40,8 @@ Page({
     var objData = e.detail.value;
     //如果账号和密码都不为空
     if (objData.username && objData.password) {
+      console.log(objData.username)
+      console.log(objData.password)
       this.setData({
         username: objData.username,
         password: objData.password
@@ -70,10 +72,10 @@ Page({
 
   },
   loginSuccess: function(res) {
-    toastr.ok({
+    wx.showToast({
       title: '登录成功',
-      duration: 1000,
-    });
+      icon:'success'
+    })
     if (res.data.code == 200) {
       var result = res.data.info
       console.log(result)
