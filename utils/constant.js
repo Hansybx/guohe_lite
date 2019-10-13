@@ -3,7 +3,8 @@ const login = 'https://guohe3.com/api/student/login'
 // const login = 'http://stu.guohe3.com/api/v1/stu/login'
 
 //查询学生校历信息
-const xiaoli = 'https://guohe3.com/api/justInfo/getSchoolCalendar'
+// const xiaoli = 'https://guohe3.com/api/justInfo/getSchoolCalendar'
+const xiaoli = 'http://stu.guohe3.com/api/v1/stu/school/calendar'
 
 //查询学生的所有课表
 const kb = 'https://guohe3.com/api/student/getSchoolTimetable'
