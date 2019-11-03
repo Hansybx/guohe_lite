@@ -1,32 +1,38 @@
 //学生登陆
-const login = 'https://guohe3.com/api/student/login'
-// const login = 'http://stu.guohe3.com/api/v1/stu/login'
+// const login = 'https://guohe3.com/api/student/login'
+const login = 'https://stu.guohe3.com/api/v1/stu/login'
 
 //查询学生校历信息
 // const xiaoli = 'https://guohe3.com/api/justInfo/getSchoolCalendar'
-const xiaoli = 'http://stu.guohe3.com/api/v1/stu/school/calendar'
+const xiaoli = 'https://stu.guohe3.com/api/v1/stu/school/calendar'
 
 //查询学生的所有课表
-const kb = 'https://guohe3.com/api/student/getSchoolTimetable'
-// const kb = 'http://stu.guohe3.com/api/v1/stu/class/schedule'
+// const kb = 'https://guohe3.com/api/student/getSchoolTimetable'
+const kb = 'https://stu.guohe3.com/api/v1/stu/class/schedule/update'
+const kb_search = 'https://stu.guohe3.com/api/v1/stu/class/schedule'
 
 //获取云端推送的消息
 const get_mess = 'https://guohe3.com/getToast'
 
 //获取学生早操信息
-const get_exercise = 'https://guohe3.com/vpnRun'
+// const get_exercise = 'https://guohe3.com/vpnRun'
+const get_exercise = 'https://stu.guohe3.com/api/v1/stu/pe/exercise'
 
 //获取学生俱乐部信息
-const get_sport = 'https://guohe3.com/vpnSport'
+// const get_sport = 'https://guohe3.com/vpnSport'
+const get_sport = 'https://stu.guohe3.com/api/v1/stu/pe/club'
 
 //获取学生成绩
-const get_grade = 'https://guohe3.com/api/student/getScoreAll'
+// const get_grade = 'https://guohe3.com/api/student/getScoreAll'
+const get_grade = 'https://stu.guohe3.com/api/v1/stu/score'
 
 //获取学生绩点
-const get_gpa = 'https://guohe3.com/api/student/getJidian'
+// const get_gpa = 'https://guohe3.com/api/student/getJidian'
+const get_gpa = 'https://stu.guohe3.com/api/v1/stu/gpa'
 
 //反馈接口
-const feedback = 'https://guohe3.com/api/feedback/create'
+// const feedback = 'https://guohe3.com/api/feedback/create'
+const feedback = 'https://stu.guohe3.com/api/v1/stu/feedback/create'
 
 //首页item数组的信息
 const core = [{
@@ -169,6 +175,7 @@ module.exports = {
   XIAO_LI: xiaoli,
   //获取课表
   KB: kb,
+  KB_SEARCH: kb_search,
   //获取云端推送的消息
   GET_MESS: get_mess,
   CORE: core,

@@ -56,7 +56,8 @@ Page({
     this.onLoad()
   },
   onLoad: function() {
-    Bmob.initialize("9e77d93cb20fc1422dcc80b7084f65f6", "12e3371ba93881c4f71043c7ab7740c7");
+    // Bmob.initialize("9e77d93cb20fc1422dcc80b7084f65f6", "12e3371ba93881c4f71043c7ab7740c7");
+    Bmob.initialize("9c43235b30ad4ec18c07d28b4f46e388", "d2550773fba714e21d4746cd1c9b7541");
 
     //初始化首页头部信息
     this.initHeader()
@@ -197,8 +198,10 @@ Page({
       var all_year = info['allYear'];
       //当前周次
       var weekNum = info['weekNum'];
+      var weekday = info['weekDayNum'];
       try {
         wx.setStorageSync('all_year', all_year)
+        wx.setStorageSync('weekday', weekday)
         if (weekNum > 0 && weekNum < 21)
           wx.setStorageSync('week_num', weekNum)
         else
@@ -266,7 +269,7 @@ Page({
   },
 
   //初始化首页课表信息
-  initTodayKb: function() {
+  initTodayKb: function () {
     var that = this
     var todayKbList = []
     try {
