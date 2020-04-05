@@ -160,6 +160,8 @@ Page({
           'password': password
         }
         console.log(param)
+        console.log(Constant.XIAO_LI)
+        console.log(Constant.LOGIN)
         //发送获取学生校历信息的请求
         HttpUtils._post(
           Constant.XIAO_LI,

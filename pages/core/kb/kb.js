@@ -264,6 +264,7 @@ Page({
               var cName = couese[1]
               var cRoom = couese[4]
               var index = Math.floor((Math.random() * that.data.colorArrays.length));
+              console.log(index)
               if (cRoom == undefined)
                 cRoom = ''
               var day = {

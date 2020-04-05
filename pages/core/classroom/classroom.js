@@ -228,7 +228,7 @@ Page({
       isLoad: true,
     })
     var that = this
-
+    console.log('1')
     wx.getStorage({
       key: 'account',
       success: function(res) {
@@ -240,7 +240,7 @@ Page({
           })
           // var yearList = wx.getStorageSync('all_year')
           wx.request({
-            url: 'https://stu.guohe3.com/api/v1/stu/classroom/empty',
+            url: 'https://guohe3.cn/api/v1/stu/classroom/empty',
             method: 'POST',
             data: {
               username: that.data.username,
@@ -253,6 +253,10 @@ Page({
             },
             header: {
               'content-type': 'application/x-www-form-urlencoded' // 默认值
+              // 'content-type': 'application/json'
+            },
+            fail: function(){
+              console.log('failed')
             },
             success: function(res) {
               if (res.data.code == 200) {

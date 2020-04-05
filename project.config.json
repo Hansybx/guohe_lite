@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -53,6 +53,20 @@
 					"id": -1,
 					"name": "pages/core/sport/sport",
 					"pathName": "pages/core/sport/sport",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/core/score/score",
+					"pathName": "pages/core/score/score",
 					"scene": null
 				}
 			]
