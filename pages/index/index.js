@@ -72,7 +72,7 @@ Page({
     this.initTodayKb()
 
     //获取日知录信息
-    this.getOneContent()
+    // this.getOneContent()
   },
 
   /**

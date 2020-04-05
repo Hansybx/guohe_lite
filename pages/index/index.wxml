@@ -62,19 +62,19 @@
     <navigator url="/pages/core/love/love">
       <view class="card-item-hd">
         <image class="card-item-icon" src="/images/core/love.png"></image>
-        <text class="card-item-name">表白墙</text>
+        <text class="card-item-name">消息</text>
       </view>
       <view class='toast'>
         {{toast}}
       </view>
-      <view class="kb-open">
-        <text>进入表白墙</text>
-      </view>
+      <!-- <view class="kb-open">
+        <text>消息</text>
+      </view> -->
     </navigator>
   </view>
 
   <!-- 日知录 -->
-  <view class="main-card-item" id="music">
+  <!-- <view class="main-card-item" id="music">
     <view class="card-item-hd">
       <image class="card-item-icon" src="/images/index/one.png"></image>
       <text class="card-item-name">日知录</text>
@@ -98,10 +98,9 @@
             <text selectable='true'>{{oneWordFrom}}</text>
           </view>
         </view>
-      </view>
-
+      </view>      
     </view>
-  </view>
+  </view> -->
 
   <!-- 广告 -->
   <view class="main-card-item" id="ad">

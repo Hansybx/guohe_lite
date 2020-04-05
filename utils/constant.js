@@ -34,6 +34,13 @@ const get_gpa = 'https://guohe3.cn/api/v1/stu/gpa'
 // const feedback = 'https://guohe3.com/api/feedback/create'
 const feedback = 'https://guohe3.cn/api/v1/stu/feedback/create'
 
+// 根据isbn查询该图书是否在旭升书屋的库存中
+const xs_isbn='https://guohe3.cn/api/v1/xsbook'
+
+// 旭升书屋 新增卖/买书订单接口
+const xs_order_sell='https://guohe3.cn/api/v1/xsbook/sell'
+const xs_order_buy='https://guohe3.cn/api/v1/xsbook/buy'
+
 //首页item数组的信息
 const core = [{
     id: 'kb',
@@ -71,7 +78,6 @@ const core = [{
     enable: true
   }
 ]
-
 
 const card = {
   'kb': {
@@ -167,7 +173,6 @@ const card = {
   }
 }
 
-
 module.exports = {
   //登陆
   LOGIN: login,
@@ -189,5 +194,10 @@ module.exports = {
   //获取成绩信息
   GRADE: get_grade,
   //反馈
-  FEEDBACK: feedback
+  FEEDBACK: feedback,
+  //旭升书屋ISBN
+  XS_ISBN:xs_isbn,
+  // 旭升书屋 新增卖/买书订单接口
+  XS_ORDER_SELL:xs_order_sell,
+  XS_ORDER_BUY:xs_order_buy
 };

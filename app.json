@@ -19,7 +19,8 @@
     "pages/core/prize/detail/detail",
     "pages/core/kb/kb",
     "pages/core/love/love",
-    "pages/core/news/news"
+    "pages/core/news/news",
+    "pages/core/xs/xs"
   ],
   "window": {
     "backgroundTextStyle": "light",
