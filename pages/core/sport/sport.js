@@ -58,6 +58,7 @@ Page({
   //获取早操数据
   getExerciseData: function(password) {
     var account = wx.getStorageSync('account')
+    wx.setStorageSync('sport', password)
 
     if (account) {
       //已经登陆
@@ -67,6 +68,8 @@ Page({
       var param = {
         'username': username,
         'password': password
+        // 'username': 192210711204,
+        // 'password':'RJL'
       }
       //发送获取学生早操信息的请求
       HttpUtils._post(
@@ -101,9 +104,11 @@ Page({
 
       //更新早操数据
       this.setData({
-        info: data[0].name + "\n" + data[0].sum + "\n" + data[0].year + data[0].total,
+        // info: data[0].name + "\n" + data[0].sum + "\n" + data[0].year + data[0].total,
+        info: data[data.length - 1].total,
         isLoad: false,
-        dataList: data[1],
+        // dataList: data[1],
+        dataList: data.slice(0, data.length - 1),
       })
     } else {
       wx.showToast({
@@ -174,9 +179,11 @@ Page({
       console.log(res.data.info)
       var data = res.data.info;
       this.setData({
-        info: data[0].name + "\n" + data[0].sum + "\n" + data[0].year + data[0].total,
+        // info: data[0].name + "\n" + data[0].sum + "\n" + data[0].year + data[0].total,
+        info: data[data.length - 1].total,
         isLoad: false,
-        dataList: data[1],
+        // dataList: data[1],
+        dataList: data.slice(0,data.length-1),
       })
     } else {
       wx.showToast({

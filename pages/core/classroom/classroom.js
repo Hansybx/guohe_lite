@@ -9,7 +9,8 @@ Page({
     empty_classroom_info: [],
     username: '',
     password: '',
-    school_year: '2018-2019-2',
+    // school_year: '2019-2020-1',
+    school_year: '',
     areaArray: [
       "东校区",
       "南校区",
@@ -109,7 +110,8 @@ Page({
     area_para: '01',
 
     zc_index: 0,
-    zc: '第一周',
+    // zc: '第一周',
+    zc: '',
     zc_para: '1',
 
     building_index: 0,
@@ -119,6 +121,35 @@ Page({
     week_index: 0,
     week: '周一',
   },
+
+  //初始化头部数据
+  initHeaderData: function () {
+    //填充学年数组
+    try {
+      var yearValue = wx.getStorageSync('all_year')
+      var weekValue = wx.getStorageSync('week_num')
+      var weekday = wx.getStorageSync('weekday')
+      if (yearValue) {
+        this.setData({
+          yearList: yearValue,
+        })
+      }
+      if (weekValue){
+        let week = 0
+        if (weekValue > 0 && weekValue < 21)
+          week = weekValue - 1
+        else week = 1
+        this.setData({
+          zc_index: week,
+          zc_para: weekValue,
+          week_index: weekday-1
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  
   // 切换校区
   bindAreaChange: function(e) {
     var that = this
@@ -197,6 +228,7 @@ Page({
       isLoad: true,
     })
     var that = this
+    console.log('1')
     wx.getStorage({
       key: 'account',
       success: function(res) {
@@ -206,25 +238,33 @@ Page({
             username: account.username,
             password: account.password
           })
+          // var yearList = wx.getStorageSync('all_year')
           wx.request({
-            url: 'https://guohe3.com/vpnClassroom',
+            url: 'https://guohe3.cn/api/v1/stu/classroom/empty',
             method: 'POST',
             data: {
               username: that.data.username,
               password: that.data.password,
-              school_year: that.data.school_year,
+              // semester: that.data.school_year,
+              semester: that.data.yearList[0],
               area_id: that.data.area_para,
               building_id: that.data.building_para,
-              zc1: that.data.zc_para
+              week: that.data.zc_para
             },
             header: {
               'content-type': 'application/x-www-form-urlencoded' // 默认值
+              // 'content-type': 'application/json'
+            },
+            fail: function(){
+              console.log('failed')
             },
             success: function(res) {
               if (res.data.code == 200) {
+                console.log(res)
                 var weekIndex = that.data.week_index
                 var roomsInfo = res.data.info
-                var weekArray = ["Mon", "Tue", "Wedn", "Thur", "Fri", "Sat", "Sun"]
+                // var weekArray = ["Mon", "Tue", "Wedn", "Thur", "Fri", "Sat", "Sun"]
+                var weekArray = ["1","2","3","4","5","6","7"]
                 var result = []
                 for (var i = 0; i < roomsInfo.length; i++) {
                   if (roomsInfo[i].weekday == weekArray[weekIndex]) {
@@ -259,19 +299,24 @@ Page({
   timeChange: function(time) {
     var timeChanged = ''
     switch (time) {
-      case '0102':
+      // case '0102':
+      case '1':
         timeChanged = '第1大节'
         break
-      case '0304':
+      // case '0304':
+      case '2':
         timeChanged = '第2大节'
         break
-      case '0506':
+      // case '0506':
+      case '3':
         timeChanged = '第3大节'
         break
-      case '0708':
+      // case '0708':
+      case '4':
         timeChanged = '第4大节'
         break
-      case '091011':
+      // case '091011':
+      case '5':
         timeChanged = '第5大节'
         break
     }
@@ -282,6 +327,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.initHeaderData()
     // var that = this
     // wx.getStorage({
     //     key: 'account',

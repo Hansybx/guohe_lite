@@ -77,7 +77,8 @@ Page({
       icon:'success'
     })
     if (res.data.code == 200) {
-      var result = res.data.info
+      // var result = res.data.info
+      var result = res.data.info[0]
       console.log(result)
       result['password'] = this.data.password
       wx.setStorage({

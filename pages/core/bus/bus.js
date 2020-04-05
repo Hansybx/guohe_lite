@@ -7,19 +7,19 @@ Page({
      */
     data: {
         tabs: ["东—南—西", "东——南"],
-        activeIndex: 1,
+        activeIndex: 0,
         sliderOffset: 0,
         sliderLeft: 0,
         listData1: [{
-                "east": "7:35→",
-                "south": "7:45→",
-                "west": "7:55→",
+                "east": "7:30→",
+                "south": "7:40→",
+                "west": "7:50→",
                 "tip": "1-7"
             },
             {
-                "east": "7:55←",
-                "south": "7:45←",
-                "west": "7:35←",
+                "east": "7:50←",
+                "south": "7:40←",
+                "west": "7:30←",
                 "tip": "1-7"
             },
             {
@@ -108,8 +108,8 @@ Page({
             },
         ],
         listData2: [{
-                "east": "7:35→",
-                "south": "7:45→",
+                "east": "7:30→",
+                "south": "7:40→",
                 "tip": "1-5"
             },
             {

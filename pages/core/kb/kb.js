@@ -239,12 +239,15 @@ Page({
       wlist: this.data.kb
     })
     try {
-      var allKb = wx.getStorageSync('allKb')
+      // var allKb = wx.getStorageSync('allKb')
       if (that.data.kb) {
+        let allKb = wx.getStorageSync('allKb')
         this.setData({
           wlist: allKb
+          // wlist:[]
         })
       }
+      var allKb = wx.getStorageSync('allKb')
       if (allKb) {
         for (var i = 0; i < allKb.length; i++) {
           var o = allKb[i]
@@ -261,6 +264,7 @@ Page({
               var cName = couese[1]
               var cRoom = couese[4]
               var index = Math.floor((Math.random() * that.data.colorArrays.length));
+              console.log(index)
               if (cRoom == undefined)
                 cRoom = ''
               var day = {
@@ -283,6 +287,7 @@ Page({
     }
 
     this.setData({
+      // wlist: allKb,
       wlist: this.data.wlist
     })
   },

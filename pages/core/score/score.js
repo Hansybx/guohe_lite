@@ -92,14 +92,29 @@ Page({
           scores: res.data.info,
           change_scores: res.data.info,
         })
+        console.log(res)
+        console.log('res')
+      } else if (code == 402) {
+        this.setData({
+          scores: res.data.info,
+          change_scores: res.data.info,
+        })
+        toastr.error({
+          title: '强智系统未评教请在强智教务评教后在查询',
+          duration: 1000,
+        });
       } else {
         this.setData({
           loadStyle: 'hide',
           tableStyle: 'show'
         })
+        var temp_icon = 'loading';
+        if (code == 402) {
+          temp_icon = 'none'
+        }
         wx.showToast({
           title: mess,
-          icon: 'loading',
+          icon: temp_icon,
           duration: 2000
         })
       }
@@ -161,13 +176,14 @@ Page({
     if (status == 200) {
       var code = res.data.code
       var mess = res.data.msg
-      if (code == 200) {
+      if (code == 200 || code == 402) {
         console.log(res.data)
         var info = res.data.info
         var year_list = new Array()
         var point_list = new Array()
         console.log(point_list)
-        for (var i = 1; i < info.length; i++) {
+        // for (var i = 1; i < info.length; i++) {
+        for (var i = 0; i < info.length; i++) {
           year_list.push(info[i].year)
           point_list.push(info[i].point)
         }
@@ -203,9 +219,13 @@ Page({
           loadStyle: 'hide',
           tableStyle: 'show'
         })
+        var temp_icon = 'loading';
+        if (code == 402) {
+          temp_icon = 'none'
+        }
         wx.showToast({
           title: mess,
-          icon: 'loading',
+          icon: temp_icon,
           duration: 2000
         })
       }

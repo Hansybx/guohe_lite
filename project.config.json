@@ -24,9 +24,52 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
-			"current": -1,
+		"plugin": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/core/kb/kb",
+					"pathName": "pages/core/kb/kb",
+					"query": "",
+					"scene": null
+				}
+			]
+		},
+		"game": {
 			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/login/login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/core/sport/sport",
+					"pathName": "pages/core/sport/sport",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/core/score/score",
+					"pathName": "pages/core/score/score",
+					"scene": null
+				}
+			]
 		}
 	}
 }
