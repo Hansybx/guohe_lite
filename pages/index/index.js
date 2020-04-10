@@ -1,11 +1,11 @@
 //index.js
 //获取应用实例
-var app = getApp();
 var order = ['red', 'yellow', 'blue', 'green', 'red']
-var util = require('../../utils/util.js');
-var Constant = require('../../utils/constant.js')
-var HttpUtils = require('../../utils/http-utils.js')
-var Bmob = require('../../utils/Bmob-1.6.7.min.js');
+
+var util = require('../../lib/js/util');
+var Constant = require('../../lib/js/constant.js')
+var HttpUtils = require('../../lib/js/http-utils.js')
+var Bmob = require('../../lib/js/Bmob-1.6.7.min.js');
 
 Page({
 
@@ -72,7 +72,7 @@ Page({
     this.initTodayKb()
 
     //获取日知录信息
-    this.getOneContent()
+    // this.getOneContent()
   },
 
   /**
@@ -122,7 +122,6 @@ Page({
     const query = Bmob.Query("push_message");
     query.find().then(res => {
       var message = res[res.length - 1]['content']
-      console.log(message)
       that.setData({
         toast: message
       })
@@ -146,8 +145,6 @@ Page({
 
   //获取校历信息
   getXiaoli: function() {
-    console.log('获取校历信息')
-    var that = this
     try {
       //查看是否已经登录
       var account = wx.getStorageSync('account')
@@ -159,9 +156,6 @@ Page({
           'username': username,
           'password': password
         }
-        console.log(param)
-        console.log(Constant.XIAO_LI)
-        console.log(Constant.LOGIN)
         //发送获取学生校历信息的请求
         HttpUtils._post(
           Constant.XIAO_LI,
@@ -184,8 +178,6 @@ Page({
 
   //获取校历成功的回掉函数
   getXiaoliSuccess: function(res) {
-    console.log('获取校历成功的回掉函数:')
-    console.log(res)
     if (res.data.code == 500) {
       wx.showToast({
         title: '教务系统异常',
@@ -195,7 +187,6 @@ Page({
     if (res.data.code == 200) {
       //全部校历信息
       var info = res.data.info;
-      console.log(info)
       //该学生全部学年信息
       var all_year = info['allYear'];
       //当前周次
@@ -222,7 +213,6 @@ Page({
   //点击首页的item跳转到相应的页面
   navigateTo: function(event) {
     var info = event.currentTarget.dataset.info
-    console.log(info)
     var id = info.id
     var enable = info.enable
     if (id == 'kb') {
@@ -294,7 +284,6 @@ Page({
               var begin = ss[0]
               var end = ss[1]
               if (week >= begin && week <= end || week == begin || week == end) {
-                console.log(o)
                 var jieci = o.skjc
                 var couese = o.des.split('@')
                 var cName = couese[1]
@@ -338,7 +327,7 @@ Page({
   //显示完整课表
   showAllKb: function() {
     wx.switchTab({
-      url: '../core/kb/kb',
+      url: '../kb/kb',
     })
   },
 

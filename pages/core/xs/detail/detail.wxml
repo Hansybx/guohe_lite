@@ -1,0 +1,39 @@
+<!--pages/core/xs/detail/detail.wxml-->
+<view class="orders">
+	<view class="header">
+		<text class="text1">订单已完成</text>
+		<text class="text2">订单信息已发送至管理员邮箱，注意查收～</text>
+	</view>
+	<view style="line-height: 90rpx;  text-align: left;  margin-left: 30rpx;">书籍列表</view>
+	<view class="{{!showMore? 'hiddenmore' : 'showmore'}}">
+		<view wx:for="{{orderList}}" wx:key="index" wx:for-index="idx" class="orders-list {{idx>2 ? 'more-item' : ''}}">
+			<image class="orders-thumb" src="{{item.image}}" mode="aspectFill"></image>
+
+			<view class=".order-item-info">
+				<view class="orders-pro-name">{{item.title}}</view>
+				<view class="orders-pro-price">￥{{item.price}}</view>
+				<view class="orders-count-num">×{{item.num}}</view>
+			</view>
+		</view>
+	</view>
+	<block wx:if="{{orderList.length>3}}">
+		<view wx:if="{{showMore}}" class='tips' bindtap='listToggle'>
+			收起
+		</view>
+		<view wx:else class='tips' bindtap='listToggle'>
+			查看更多
+		</view>
+	</block>
+
+	<view class="order-total">
+		<view class="order-total-count">共有{{order.book_count}}本书，共收入 </view>
+		<view class="order-total-price">¥{{order.order_price}}</view>
+	</view>
+
+</view>
+
+<view class="order-info">
+	<view>订单编号：{{order.oid}}</view>
+	<view>订单时间：{{order.time}}</view>
+	<view>地址:{{order.address}}</view>
+</view>

@@ -1,6 +1,6 @@
-var Constant = require('../../utils/constant.js')
-var HttpUtils = require('../../utils/http-utils.js')
-var toastr = require('../../utils/toastr-wxapp.js');
+var Constant = require('../../lib/js/constant')
+var HttpUtils = require('../../lib/js/http-utils.js')
+var toastr = require('../../lib/js/toastr-wxapp.js');
 
 Page({
   data: {
@@ -32,7 +32,7 @@ Page({
       inputPassword: true
     })
   },
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     this.setData({
       isLoading: true
     })
@@ -40,8 +40,6 @@ Page({
     var objData = e.detail.value;
     //如果账号和密码都不为空
     if (objData.username && objData.password) {
-      console.log(objData.username)
-      console.log(objData.password)
       this.setData({
         username: objData.username,
         password: objData.password
@@ -71,15 +69,13 @@ Page({
     }, 1000)
 
   },
-  loginSuccess: function(res) {
+  loginSuccess: function (res) {
     wx.showToast({
       title: '登录成功',
-      icon:'success'
+      icon: 'success'
     })
     if (res.data.code == 200) {
-      // var result = res.data.info
       var result = res.data.info[0]
-      console.log(result)
       result['password'] = this.data.password
       wx.setStorage({
         key: "account",
@@ -96,8 +92,7 @@ Page({
       });
     }
   },
-  loginFail: function(e) {
-    console.log(e)
+  loginFail: function (e) {
     toastr.error({
       title: '系统异常,请稍后重试',
       duration: 1000,

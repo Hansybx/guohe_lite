@@ -1,6 +1,6 @@
 <!--pages/core/bus/bus.wxml-->
 <view class='logo' style='margin-bottom:20px'>
-  <image class='logo' src='/images/schoolbus.png'></image>
+  <image class='logo' src='/images/logos/schoolbus.png'></image>
 </view>
 <view class='top'>来不及解释了，快上车。</view>
 <!-- navbar -->
@@ -26,7 +26,7 @@
                 <view class="th ">西校区</view>
                 <view class='th'>每周</view>
               </view>
-              <block wx:for="{{listData1}}" wx:key="{{code}}">
+              <block wx:for="{{listData1}}" wx:key="code">
                 <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
                   <view class="td">{{item.east}}</view>
                   <view class="td">{{item.south}}</view>
@@ -52,7 +52,7 @@
                 <view class="th">南校区</view>
                 <view class='th'>每周</view>
               </view>
-              <block wx:for="{{listData1}}" wx:key="{{code}}">
+              <block wx:for="{{listData1}}" wx:key="code">
                 <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
                   <view class="td">{{item.east}}</view>
                   <view class="td">{{item.south}}</view>

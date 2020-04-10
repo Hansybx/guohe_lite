@@ -1,91 +1,94 @@
 <!--pages/core/sport/sport.wxml-->
 
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
+
 <!--弹窗-->
 <view wx:if="{{isNoPassword}}">
-  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-  <view class="modal-dialog" wx:if="{{showModal}}">
-    <view class="modal-title">请输入体育学院密码</view>
-    <view class="modal-title">（通常为姓名首字母大写）</view>
-    <view class="modal-content">
-      <view class="modal-input">
-        <input placeholder-class="input-holder" type="text" bindinput="inputChange" class="input" placeholder="请输入密码"></input>
-      </view>
-    </view>
-    <view class="modal-footer">
-      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
-      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
-    </view>
-  </view>
+	<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+	<view class="modal-dialog" wx:if="{{showModal}}">
+		<view class="modal-title">请输入体育学院密码</view>
+		<view class="modal-title">（通常为姓名首字母大写）</view>
+		<view class="modal-content">
+			<view class="modal-input">
+				<input placeholder-class="input-holder" type="text" bindinput="inputChange" class="input" placeholder="请输入密码"></input>
+			</view>
+		</view>
+		<view class="modal-footer">
+			<view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+			<view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+		</view>
+	</view>
 </view>
 
 <!-- 图标和总时长按钮 -->
 <view bindtap='showInfo' class='logo' style='margin-bottom:20px'>
-  <image class='logo' src='/images/sport.png'></image>
+	<image class='logo' src='/images/logos/sport.png'/>
 </view>
 <view bindtap='showInfo' class='time-btn'>
-  <button class="weui-btn" type="primary" size='mini'>点我查看总时长</button>
+	<button class="weui-btn" type="primary" size='mini'>点我查看总时长</button>
 </view>
 
 <!-- navbar -->
 <view class="page">
-  <view class="page__bd">
-    <view class="weui-tab">
-      <view class="weui-navbar">
-        <block wx:for="{{tabs}}" wx:key="*this">
-          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-            <view class="weui-navbar__title">{{item}}</view>
-          </view>
-        </block>
-        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
-      </view>
-      <view class="weui-tab__panel">
-        <image wx:if="{{isLoad}}" class='load1 {{loadStyle}}' src='../../../images/logo.jpg'></image>
-        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <view class='card'>
-            <view class="table">
+	<view class="page__bd">
+		<view class="weui-tab">
+			<view class="weui-navbar">
+				<block wx:for="{{tabs}}" wx:key="*this">
+					<view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+						<view class="weui-navbar__title">{{item}}</view>
+					</view>
+				</block>
+				<view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+			</view>
+			<view class="weui-tab__panel">
+				<image wx:if="{{isLoad}}" class='load1 {{loadStyle}}' src='/images/logos/logo.jpg'/>
+				<view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+					<view class='card'>
+						<view class="table">
 
-              <view class="tr bg-w">
-                <view class="th">日期</view>
-                <view class="th">时长</view>
-              </view>
-              <block wx:for="{{dataList}}" wx:key="{{code}}" wx:if="{{!isLoad}}">
+							<view class="tr bg-w">
+								<view class="th">日期</view>
+								<view class="th">时长</view>
+							</view>
+							<block wx:for="{{dataList}}" wx:key="code" wx:if="{{!isLoad}}">
 
-                <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-                  <view class="td">{{item.date}}</view>
-                  <view class="td">{{item.time}}</view>
-                </view>
-                <view class="tr" wx:else>
-                  <view class="td">{{item.date}}</view>
-                  <view class="td">{{item.time}}</view>
-                </view>
-              </block>
-            </view>
-          </view>
-        </view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+								<view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+									<view class="td">{{item.date}}</view>
+									<view class="td">{{item.time}}</view>
+								</view>
+								<view class="tr" wx:else>
+									<view class="td">{{item.date}}</view>
+									<view class="td">{{item.time}}</view>
+								</view>
+							</block>
+						</view>
+					</view>
+				</view>
+				<view class="weui-tab__content" hidden="{{activeIndex != 1}}">
 
-          <view class='card'>
-            <view class="table">
-              <view class="tr bg-w">
-                <view class="th">日期</view>
-                <view class="th">时长</view>
-              </view>
-              <block wx:for="{{dataList}}" wx:key="{{code}}" wx:if="{{!isLoad}}">
+					<view class='card'>
+						<view class="table">
+							<view class="tr bg-w">
+								<view class="th">日期</view>
+								<view class="th">时长</view>
+							</view>
+							<block wx:for="{{dataList}}" wx:key="code" wx:if="{{!isLoad}}">
 
-                <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
-                  <view class="td">{{item.date}}</view>
-                  <view class="td">{{item.time}}</view>
-                </view>
-                <view class="tr" wx:else>
-                  <view class="td">{{item.date}}</view>
-                  <view class="td">{{item.time}}</view>
-                </view>
-              </block>
-            </view>
-          </view>
-        </view>
+								<view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+									<view class="td">{{item.date}}</view>
+									<view class="td">{{item.time}}</view>
+								</view>
+								<view class="tr" wx:else>
+									<view class="td">{{item.date}}</view>
+									<view class="td">{{item.time}}</view>
+								</view>
+							</block>
+						</view>
+					</view>
+				</view>
 
-      </view>
-    </view>
-  </view>
+			</view>
+		</view>
+	</view>
 </view>

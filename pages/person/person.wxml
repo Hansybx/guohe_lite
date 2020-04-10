@@ -1,0 +1,97 @@
+<view class='contant'>
+
+	<view class='header' style='margin-bottom:20px'>
+		<open-data class="header-avatar" background-size="cover" type="userAvatarUrl"></open-data>
+		<open-data class="header-nickname" type="userNickName" lang="zh_CN"></open-data>
+	</view>
+	<view class='card'>
+		<view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
+			<view class="weui-panel__hd" style='font-size:30rpx'>设置</view>
+			<view class="weui-panel__bd">
+				<view class="weui-media-box weui-media-box_small-appmsg">
+					<view class="weui-cells weui-cells_in-small-appmsg">
+						<!-- 分隔线 -->
+						<navigator url="/pages/person/about/about" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>关于「果核」</view>
+							</view>
+							<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+						</navigator>
+						<!-- 分隔线 -->
+						<navigator url="/pages/person/log/log" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>更新日志</view>
+							</view>
+							<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+						</navigator>
+						<!-- 分隔线 -->
+						<navigator url="/pages/person/log/log" class="weui-cell weui-cell_access" hover-class="weui-cell_active" target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>用户社群</view>
+							</view>
+							<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+						</navigator>
+						<!-- 分隔线 -->
+						<navigator url="/pages/person/feedback/feedback" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>私信我们</view>
+							</view>
+							<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+						</navigator>
+						<!-- 分隔线 -->
+						<view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='showAd'>
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>支持我们</view>
+							</view>
+							<view class="weui-cell__ft weui-cell__ft_in-access"></view>
+						</view>
+
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="weui-panel" style="margin-bottom:12px; margin-left: 14rpx;margin-right: 14rpx; border-radius: 15rpx;">
+			<view class="weui-panel__hd" style='font-size:30rpx'>个人信息</view>
+			<view class="weui-panel__bd">
+				<view class="weui-media-box weui-media-box_small-appmsg">
+					<view class="weui-cells weui-cells_in-small-appmsg">
+						<!-- 分隔线 -->
+						<view class="weui-cell weui-cell_access">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>姓名</view>
+								<view class='user_info'>{{info.name}}</view>
+							</view>
+						</view>
+						<!-- 分隔线 -->
+						<view class="weui-cell weui-cell_access">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>学号</view>
+								<view class='user_info'>{{info.username}}</view>
+							</view>
+						</view>
+						<!-- 分隔线 -->
+						<view class="weui-cell weui-cell_access">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>学院</view>
+								<view class='user_info'>{{info.academy}}</view>
+							</view>
+						</view>
+						<!-- 分隔线 -->
+						<view class="weui-cell weui-cell_access">
+							<view class="weui-cell__bd weui-cell_primary">
+								<view class='card-item-font'>专业</view>
+								<view class='user_info'>{{info.major}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<button bindtap='changeAccount'>切换账号</button>
+
+	<ad unit-id="adunit-0a8bec84c0580aff"></ad>
+
+</view>

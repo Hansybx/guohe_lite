@@ -1,4 +1,6 @@
 // pages/core/classroom/classroom.js
+var Constant = require('../../../lib/js/constant.js')
+var HttpUtils = require('../../../lib/js/http-utils.js')
 Page({
 
   /**
@@ -9,8 +11,8 @@ Page({
     empty_classroom_info: [],
     username: '',
     password: '',
-    // school_year: '2019-2020-1',
     school_year: '',
+    error: '',
     areaArray: [
       "东校区",
       "南校区",
@@ -36,7 +38,6 @@ Page({
       "实验楼11",
       "计算中心"
     ],
-
     eastBuildingArray: [
       "综合楼B",
       "综合楼C",
@@ -97,7 +98,6 @@ Page({
       "经管数理": 24,
       "船海土木": 25
     },
-
     area_para_list: {
       "东校区": '01',
       "南校区": '02',
@@ -110,14 +110,12 @@ Page({
     area_para: '01',
 
     zc_index: 0,
-    // zc: '第一周',
     zc: '',
     zc_para: '1',
 
     building_index: 0,
     building: '综合楼B',
     building_para: '2',
-
     week_index: 0,
     week: '周一',
   },
@@ -129,12 +127,20 @@ Page({
       var yearValue = wx.getStorageSync('all_year')
       var weekValue = wx.getStorageSync('week_num')
       var weekday = wx.getStorageSync('weekday')
-      if (yearValue) {
+      var account = wx.getStorageSync('account')
+      if (account) {
         this.setData({
-          yearList: yearValue,
+          username: account.username,
+          password: account.password
         })
       }
-      if (weekValue){
+      if (yearValue) {
+        this.setData({
+          // 学期即当前学期
+          school_year: yearValue[0],
+        })
+      }
+      if (weekValue) {
         let week = 0
         if (weekValue > 0 && weekValue < 21)
           week = weekValue - 1
@@ -142,51 +148,49 @@ Page({
         this.setData({
           zc_index: week,
           zc_para: weekValue,
-          week_index: weekday-1
+          week_index: weekday - 1
         })
       }
     } catch (e) {
       console.log(e)
     }
   },
-  
+
   // 切换校区
-  bindAreaChange: function(e) {
+  bindAreaChange: function (e) {
     var that = this
     var area_value = this.data.areaArray[e.detail.value]
-    // console.log(e.detail.value)
-    // console.log(area_value)
-    that.setData({
+    this.setData({
       area_index: e.detail.value,
       area: area_value,
       area_para: this.data.area_para_list[area_value]
     })
     if (this.data.area_index == 0) {
-      that.setData({
+      this.setData({
         chooseBuildingArray: this.data.eastBuildingArray,
         building_para: 2,
         building: '综合楼B'
       })
     } else if (this.data.area_index == 1) {
-      that.setData({
+      this.setData({
         chooseBuildingArray: this.data.southBuildingArray,
         building_para: 12,
         building: '一宗'
       })
     } else if (this.data.area_index == 2) {
-      that.setData({
+      this.setData({
         chooseBuildingArray: this.data.westBuildingArray,
         building_para: 10,
         building: '西综'
       })
     } else if (this.data.area_index == 3) {
-      that.setData({
+      this.setData({
         chooseBuildingArray: this.data.zhangBuildingArray,
         building_para: 26,
         building: '教学楼E'
       })
     } else {
-      that.setData({
+      this.setData({
         chooseBuildingArray: this.data.suBuildingArray,
         building_para: 18,
         building: '教学楼A'
@@ -194,7 +198,7 @@ Page({
     }
   },
   //切换周次
-  bindZcChange: function(e) {
+  bindZcChange: function (e) {
     var that = this
     var zc_value = this.data.zcArray[e.detail.value]
     that.setData({
@@ -204,7 +208,7 @@ Page({
     })
   },
   // 切换楼
-  bindBuildingChange: function(e) {
+  bindBuildingChange: function (e) {
     var that = this
     var building_value = this.data.chooseBuildingArray[e.detail.value]
     that.setData({
@@ -214,7 +218,7 @@ Page({
     })
   },
   // 切换星期几
-  bindWeekChange: function(e) {
+  bindWeekChange: function (e) {
     var that = this
     var weekIndex = e.detail.value
     that.setData({
@@ -223,99 +227,84 @@ Page({
     })
   },
 
-  search: function(event) {
+  search: function () {
     this.setData({
       isLoad: true,
     })
-    var that = this
-    console.log('1')
-    wx.getStorage({
-      key: 'account',
-      success: function(res) {
-        if (res.data) {
-          var account = res.data
-          that.setData({
-            username: account.username,
-            password: account.password
-          })
-          // var yearList = wx.getStorageSync('all_year')
-          wx.request({
-            url: 'https://guohe3.cn/api/v1/stu/classroom/empty',
-            method: 'POST',
-            data: {
-              username: that.data.username,
-              password: that.data.password,
-              // semester: that.data.school_year,
-              semester: that.data.yearList[0],
-              area_id: that.data.area_para,
-              building_id: that.data.building_para,
-              week: that.data.zc_para
-            },
-            header: {
-              'content-type': 'application/x-www-form-urlencoded' // 默认值
-              // 'content-type': 'application/json'
-            },
-            fail: function(){
-              console.log('failed')
-            },
-            success: function(res) {
-              if (res.data.code == 200) {
-                console.log(res)
-                var weekIndex = that.data.week_index
-                var roomsInfo = res.data.info
-                // var weekArray = ["Mon", "Tue", "Wedn", "Thur", "Fri", "Sat", "Sun"]
-                var weekArray = ["1","2","3","4","5","6","7"]
-                var result = []
-                for (var i = 0; i < roomsInfo.length; i++) {
-                  if (roomsInfo[i].weekday == weekArray[weekIndex]) {
-                    var room = {
-                      place: roomsInfo[i].place,
-                      time: that.timeChange(roomsInfo[i].time),
-                      weekday: that.data.weekArray[weekIndex]
-                    }
-                    result.push(room)
-                  }
-                }
+    var data = {
+      "username": this.data.username,
+      "password": this.data.password,
+      "semester": this.data.school_year,
+      "area_id": this.data.area_para,
+      "building_id": this.data.building_para,
+      "week": this.data.zc_para
+    }
+    console.log(data)
+    HttpUtils._post(
+      Constant.CLASSROOM,
+      data,
+      this.searchSuccess,
+      this.searchFailed
+    )
+  },
 
-                that.setData({
-                  empty_classroom_info: result,
-                  isLoad: false,
-                })
-
-                console.log(result)
-              } else {
-                console.log("空教室查询失败")
-              }
-            }
-          })
-        } else {
-          console.log("未登录")
+  searchSuccess: function (res) {
+    console.log(res)
+    if (res.data.code == 200) {
+      var weekIndex = this.data.week_index
+      var roomsInfo = res.data.info
+      var weekArray = ["1", "2", "3", "4", "5", "6", "7"]
+      var result = []
+      for (var i = 0; i < roomsInfo.length; i++) {
+        if (roomsInfo[i].weekday == weekArray[weekIndex]) {
+          var room = {
+            place: roomsInfo[i].place,
+            time: this.timeChange(roomsInfo[i].time),
+            weekday: this.data.weekArray[weekIndex]
+          }
+          result.push(room)
         }
-      },
+      }
+      this.setData({
+        empty_classroom_info: result,
+        isLoad: false,
+      })
+      console.log(result)
+    } else {
+      this.setData({
+        error: "空教室查询失败",
+        isLoad: false,
+      })
+    }
+  },
+  searchFailed: function (e) {
+    this.setData({
+      error: "空教室查询失败",
+      isLoad: false,
     })
   },
 
   //根据需要更换课时信息
-  timeChange: function(time) {
+  timeChange: function (time) {
     var timeChanged = ''
     switch (time) {
       // case '0102':
       case '1':
         timeChanged = '第1大节'
         break
-      // case '0304':
+        // case '0304':
       case '2':
         timeChanged = '第2大节'
         break
-      // case '0506':
+        // case '0506':
       case '3':
         timeChanged = '第3大节'
         break
-      // case '0708':
+        // case '0708':
       case '4':
         timeChanged = '第4大节'
         break
-      // case '091011':
+        // case '091011':
       case '5':
         timeChanged = '第5大节'
         break
@@ -326,55 +315,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.initHeaderData()
-    // var that = this
-    // wx.getStorage({
-    //     key: 'account',
-    //     success: function(res) {
-    //         if (res.data) {
-    //             var account = res.data
-    //             that.setData({
-    //                 username: account.username,
-    //                 password: account.password
-    //             })
-    //             wx.request({
-    //                 url: 'https://guohe3.com/vpnClassroom',
-    //                 method: 'POST',
-    //                 data: {
-    //                     username: that.data.username,
-    //                     password: that.data.password,
-    //                     school_year: that.data.school_year,
-    //                     area_id: that.data.area_para,
-    //                     building_id: that.data.building_para,
-    //                     zc1: that.data.zc_para
-    //                 },
-    //                 header: {
-    //                     'content-type': 'application/x-www-form-urlencoded' // 默认值
-    //                 },
-    //                 success: function(res) {
-    //                     if (res.data.code == 200) {
-    //                         that.setData({
-    //                             isLoad: false,
-    //                             empty_classroom_info: res.data.info
-    //                         })
-    //                         console.log(that.data.empty_classroom_info)
-    //                     } else {
-    //                         console.log("空教室查询失败")
-    //                     }
-    //                 }
-    //             })
-    //         } else {
-    //             console.log("未登录")
-    //         }
-    //     },
-    // })
-
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     this.search()
     wx.stopPullDownRefresh()
   },
@@ -382,7 +329,7 @@ Page({
   /**
    * 页面分享
    */
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     return {
       title: '点击查看空教室',
       path: 'pages/core/classroom/classroom'

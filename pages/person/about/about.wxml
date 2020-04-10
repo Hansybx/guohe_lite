@@ -1,0 +1,27 @@
+<!--pages/core/person/about/about.wxml-->
+<view class='contant'>
+	<view class='logo' style='margin-bottom:20px'>
+		<image class='logo' src='/images/logos/logo.jpg'></image>
+	</view>
+	<view class='edition'>「果核Lite」</view>
+
+	<!-- <view style='width:80rpx;background-color: #f8f8f8'></view> -->
+
+	<view class='top'>「果核Lite」专注于为江苏科技大学学生提供更加优质的校园服务。</view>
+	<view class='text_title'>开发团队</view>
+	<view class='text'>维护人员：韩政原</view>
+	<view class='text'>初代开发者：季航宇、浦希成、梁越勇</view>
+	<view style="height:50rpx;"></view>
+	<view class='text_title'>数据源：</view>
+	<view class='text'>通过爬虫抓取教务网数据，遵循Robots协议，承诺保护用户隐私。</view>
+	<!-- <view class='text_title'>公众号：</view>
+	<image class='public' src='../../../../images/public.jpg'></image>
+	<view class='public_text'>果核里的图灵</view> -->
+	<view style="height:50rpx;"></view>
+	<view class='text_title'>官方网站：</view>
+	<view class='text'>https://www.guohe3.cn</view>
+
+  <view style="height:50rpx;"></view>
+	<view class="text_footer">Copyright © 2020-2021 guohe3.cn</view>
+
+</view>

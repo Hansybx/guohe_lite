@@ -1,0 +1,64 @@
+/* pages/core/xs/orders/orders.wxss */
+@import '../../../../lib/wxss/common.wxss';
+@import '../../../../lib/wxss/weui.wxss';
+
+.orders-box {
+    padding-bottom: 105rpx;
+}
+
+.order-address {
+    /* margin: 20rpx 20rpx 20rpx 20rpx;
+    border: 1rpx solid #ededed; */
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10rpx 10rpx 10rpx 20rpx;
+    border-bottom: 1rpx solid #ededed;
+    /* text-align: center; */
+}
+
+.orders-list {
+    position: relative;
+    padding: 20rpx 20rpx 20rpx 220rpx;
+    height: 180rpx;
+    border-bottom: 1rpx solid #ededed;
+}
+
+.orders-thumb {
+    position: absolute;
+    top: 20rpx;
+    left: 20rpx;
+    width: 150rpx;
+    height: 200rpx;
+}
+
+.orders-list view {
+    line-height: 60rpx;
+}
+
+.orders-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 95rpx;
+    line-height: 95rpx;
+    border-top: 1rpx solid #ededed;
+}
+
+.orders-footer .orders-footer-total {
+    display: inline-block;
+    width: 510rpx;
+    padding-left: 30rpx;
+    box-sizing: border-box;
+    color: #a55350;
+}
+
+.orders-footer .orders-footer-btn {
+    display: inline-block;
+    width: 240rpx;
+    text-align: center;
+    color: #fff;
+    background: #AB956D;
+}

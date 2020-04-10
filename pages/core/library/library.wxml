@@ -1,6 +1,9 @@
 <!--pages/core/library/library.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
+
 <view class='logo' style='margin-bottom:20px'>
-  <image class='logo' src='/images/library.png'></image>
+  <image class='logo' src='/images/logos/library.png'></image>
 </view>
 
 <view class='top'>读万卷书，行万里路。</view>
@@ -18,9 +21,9 @@
         <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
       <view class="weui-tab__panel">
-        <image wx:if="{{isLoad}}" class='load1' src='../../../images/logo.jpg'></image>
+        <image wx:if="{{isLoad}}" class='load1' src='/images/logos/logo.jpg'></image>
         <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-          <block wx:for="{{dataList}}" wx:key="{{code}}" wx:if="{{!isLoad}}">
+          <block wx:for="{{dataList}}" wx:key="code" wx:if="{{!isLoad}}">
 
             <view class='card'>
               <view class="weui-form-preview">
@@ -73,7 +76,7 @@
             </view>
           </view>
 
-          <block wx:for="{{dataList}}" wx:key="{{code}}" wx:if="{{!isLoad}}">
+          <block wx:for="{{dataList}}" wx:key="code" wx:if="{{!isLoad}}">
 
             <view class='card'>
               <view class="weui-form-preview">
