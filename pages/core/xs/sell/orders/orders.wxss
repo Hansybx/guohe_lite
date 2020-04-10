@@ -1,19 +1,21 @@
 /* pages/core/xs/orders/orders.wxss */
-@import '../../../../lib/wxss/common.wxss';
-@import '../../../../lib/wxss/weui.wxss';
+@import '../../../../../lib/wxss/common.wxss';
+@import '../../../../../lib/wxss/weui.wxss';
 
 .orders-box {
     padding-bottom: 105rpx;
 }
 
-.order-address {
+.order-text {
     /* margin: 20rpx 20rpx 20rpx 20rpx;
     border: 1rpx solid #ededed; */
-    height: 80rpx;
+    height: 100rpx;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
     padding: 10rpx 10rpx 10rpx 20rpx;
+    color: #a1a1a1;
     border-bottom: 1rpx solid #ededed;
     /* text-align: center; */
 }

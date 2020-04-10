@@ -1,7 +1,7 @@
 // pages/core/xs/orders/orders.js
 
-var HttpUtils = require('../../../../lib/js/http-utils');
-var Constant = require('../../../../lib/js/constant');
+var HttpUtils = require('../../../../../lib/js/http-utils');
+var Constant = require('../../../../../lib/js/constant');
 
 
 Page({
@@ -9,34 +9,24 @@ Page({
     totalPrice: 0,
     totalCount: 0, //商品总数
     orders: [],
-    address: ''
+    address: '',
+    contact:''
   },
 
   onLoad: function (options) {
     var queryBean = JSON.parse(decodeURIComponent(options.carts));
     var address = JSON.parse(decodeURIComponent(options.address));
+    var contact=JSON.parse(decodeURIComponent(options.contact));
     this.setData({
       orders: queryBean,
-      address: address
+      address: address,
+      contact:contact
     })
 
   },
 
   onReady() {
     this.getTotalPrice();
-  },
-
-  onShow: function () {
-    const self = this;
-    wx.getStorage({
-      key: 'address',
-      success(res) {
-        self.setData({
-          address: res.data,
-          hasAddress: true
-        })
-      }
-    })
   },
 
   /**
@@ -70,9 +60,7 @@ Page({
     var address = this.data.address;
 
     var books = []
-    console.log(carts)
     for (let cart of carts) {
-      console.log(cart)
       var book = new Object();
       book['bid'] = cart['id']
       book['bname'] = cart['title']
@@ -81,7 +69,6 @@ Page({
       books.push(book)
     }
 
-    console.log(books)
 
     var account = wx.getStorageSync('account');
     var param = new Object();
@@ -92,7 +79,6 @@ Page({
     param['book_list'] = books
 
     var jsonText = JSON.stringify(param);
-    console.log(jsonText)
 
     //发送订单请求
     HttpUtils._post_json(
@@ -106,8 +92,6 @@ Page({
 
   orderSellSuccess: function (res) {
     wx.hideLoading()
-
-    console.log(res)
 
     if (res.data.code != 200) {
       wx.showToast({

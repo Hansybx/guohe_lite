@@ -26,7 +26,7 @@
 	</block>
 
 	<view class="order-total">
-		<view class="order-total-count">共有{{order.book_count}}本书，共收入 </view>
+		<view class="order-total-count">共有{{order.book_count}}本书，合计估价 </view>
 		<view class="order-total-price">¥{{order.order_price}}</view>
 	</view>
 
@@ -36,4 +36,5 @@
 	<view>订单编号：{{order.oid}}</view>
 	<view>订单时间：{{order.time}}</view>
 	<view>地址:{{order.address}}</view>
+	<view>联系方式:{{order.contact}}</view>
 </view>

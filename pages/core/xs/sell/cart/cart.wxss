@@ -1,5 +1,5 @@
 /* pages/core/xs/mall/mall.wxss */
-@import '../../../../lib/wxss/common.wxss';
+@import '../../../../../lib/wxss/common.wxss';
 
 .cart-box {
     padding-bottom: 100rpx;
@@ -37,7 +37,7 @@
 }
 
 .cart-list .cart-pro-price {
-    display: inline-block;
+    display: block;
     float: right;
     height: 105rpx;
     line-height: 50rpx;
@@ -134,12 +134,12 @@
     right: 40rpx;
 }
 
-.order-address {
+.order-input {
     margin: 20rpx 20rpx 20rpx 20rpx;
     border: 1rpx solid #ededed;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     padding: 10rpx 10rpx 10rpx 10rpx;
     text-align: center;
 }

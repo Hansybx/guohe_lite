@@ -1,5 +1,5 @@
 /* pages/core/xs/detail/detail.wxss */
-@import '../../../../lib/wxss/common.wxss';
+@import '../../../../../lib/wxss/common.wxss';
 
 Page {
   background-color: rgb(247, 245, 245);
