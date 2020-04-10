@@ -1,5 +1,5 @@
-var HttpUtils = require('../../../utils/http-utils.js')
-var Constant = require('../../../utils/constant.js')
+var HttpUtils = require('../../../lib/js/http-utils.js')
+var Constant = require('../../../lib/js/constant.js')
 
 Page({
 
@@ -17,37 +17,32 @@ Page({
     showModal: true,
     inputVal: '', //密码框中输入的内容
     isNoPassword: true,
+    error: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.isPassExisted();
   },
 
   //判断本地是否有体育密码
-  isPassExisted: function() {
+  isPassExisted: function () {
     console.log('判断本地是否有体育密码')
-    var that = this;
-    var password = '';
-    wx.getStorage({
-      key: 'sport',
-      success(res) {
-        //如果存在
-        console.log('密码存在' + res.data)
-        that.setData({
-          isNoPassword: false
-        })
-        console.log(res.data)
-        password = res.data;
-        that.getExerciseData(password);
-      },
-    })
+    var sport = wx.getStorageSync('sport');
+    if (sport != '' && sport) {
+      that.setData({
+        isNoPassword: false
+      })
+      console.log(res.data)
+      password = res.data;
+      this.getExerciseData(password);
+    }
   },
 
   //密码对话框点击确定后
-  onConfirm: function() {
+  onConfirm: function () {
     this.hideModal();
 
     //获取早操数据
@@ -56,9 +51,8 @@ Page({
   },
 
   //获取早操数据
-  getExerciseData: function(password) {
+  getExerciseData: function (password) {
     var account = wx.getStorageSync('account')
-    wx.setStorageSync('sport', password)
 
     if (account) {
       //已经登陆
@@ -68,8 +62,6 @@ Page({
       var param = {
         'username': username,
         'password': password
-        // 'username': 192210711204,
-        // 'password':'RJL'
       }
       //发送获取学生早操信息的请求
       HttpUtils._post(
@@ -83,13 +75,7 @@ Page({
   },
 
   //获取早操信息成功的回调函数
-  getExerciseSuccess: function(res) {
-    if (res.data.code == 500) {
-      wx.showToast({
-        title: '体育系统异常',
-        icon: 'loading'
-      })
-    }
+  getExerciseSuccess: function (res) {
 
     if (res.data.code == 200) {
       //响应成功，说明体育系统密码正确
@@ -111,27 +97,23 @@ Page({
         dataList: data.slice(0, data.length - 1),
       })
     } else {
-      wx.showToast({
-        title: res.data.msg,
-        icon: 'loading'
-      })
       this.setData({
-        isLoad: false
+        error: "体育系统异常",
+        isLoad: false,
       })
     }
   },
 
   //获取早操信息失败的回调函数
-  getExerciseFail: function(res) {
-    console.log(res)
-    wx.showToast({
-      title: '体育系统异常，请稍后重试',
-      icon: 'loading'
+  getExerciseFail: function (res) {
+    this.setData({
+      error: "体育系统异常",
+      isLoad: false,
     })
   },
 
   //tab切换时的操作
-  tabClick: function(e) {
+  tabClick: function (e) {
     //更换tab的状态
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
@@ -150,7 +132,7 @@ Page({
   },
 
   //获取俱乐部刷卡的数据
-  getClubData: function(password) {
+  getClubData: function (password) {
     var account = wx.getStorageSync('account')
     if (account) {
       //已经登陆
@@ -173,7 +155,7 @@ Page({
   },
 
   //获取俱乐部刷卡信息成功的回调函数
-  getClubSuccess: function(res) {
+  getClubSuccess: function (res) {
     console.log(res)
     if (res.data.code == 200) {
       console.log(res.data.info)
@@ -183,21 +165,18 @@ Page({
         info: data[data.length - 1].total,
         isLoad: false,
         // dataList: data[1],
-        dataList: data.slice(0,data.length-1),
+        dataList: data.slice(0, data.length - 1),
       })
     } else {
-      wx.showToast({
-        title: res.data.msg,
-        icon: 'loading'
-      })
       this.setData({
-        isLoad: false
+        error: "体育系统异常",
+        isLoad: false,
       })
     }
   },
 
   //获取俱乐部刷卡信息失败的回调函数
-  getClubFail: function(e) {
+  getClubFail: function (e) {
     console.log(e)
   },
 
@@ -207,7 +186,7 @@ Page({
       title: '小提示',
       showCancel: false,
       content: this.data.info,
-      success: function(res) {
+      success: function (res) {
         console.log(res);
       }
     })
@@ -217,7 +196,7 @@ Page({
       inputVal: e.detail.value
     });
   },
-  hideModal: function() {
+  hideModal: function () {
     this.setData({
       showModal: false
     });
@@ -225,7 +204,7 @@ Page({
   /**
    * 对话框取消按钮点击事件
    */
-  onCancel: function() {
+  onCancel: function () {
     this.hideModal();
     this.setData({
       isLoad: false
@@ -235,7 +214,7 @@ Page({
   /**
    * 对话框确认按钮点击事件
    */
-  showDialogBtn: function() {
+  showDialogBtn: function () {
     this.setData({
       showModal: true
     })

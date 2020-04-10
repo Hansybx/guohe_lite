@@ -1,5 +1,0 @@
-<!--pages/core/community/community.wxml-->
-  <view class='logo' style='margin-bottom:20px'>
-   <image class='logo' src='/images/index/jianshe.png'></image>
-  </view>
- <view class='top'>前方施工，注意安全</view>

@@ -1,57 +1,72 @@
 /* pages/core/classroom/classroom.wxss */
+@import '../../../lib/wxss/weui.wxss';
+
 .spinner {
   width: 60px;
   height: 60px;
   background-color: #67CF22;
- 
+
   margin: 100px auto;
   -webkit-animation: rotateplane 1.2s infinite ease-in-out;
   animation: rotateplane 1.2s infinite ease-in-out;
 }
- 
+
 @-webkit-keyframes rotateplane {
-  0% { -webkit-transform: perspective(120px) }
-  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
 }
- 
+
 @keyframes rotateplane {
-  0% { 
+  0% {
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
-  } 50% { 
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+
+  50% {
     transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
-  } 100% { 
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+
+  100% {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
 }
-.logo{
-			width: 150rpx;
-			height: 150rpx;
-			animation: myfirst 5s;
-      margin: 40rpx auto;
-      display: block;
-			animation-iteration-count:100;
-			animation-timing-function:linear;
-			animation-duration:1.8s;
-		}
 
-.top{
-    margin: 25rpx;
-    margin-bottom: 30rpx;
-    font-size: 30rpx;
-    text-align: center;
-    color: #778899;
-  }
+.logo {
+  width: 150rpx;
+  height: 150rpx;
+  animation: myfirst 5s;
+  margin: 40rpx auto;
+  display: block;
+  animation-iteration-count: 100;
+  animation-timing-function: linear;
+  animation-duration: 1.8s;
+}
 
-.changeBox{
-   height: 60rpx;
-   line-height: 100rpx;
-    top: 0;
-    display: flex;
-    justify-content:space-around;
+.top {
+  margin: 25rpx;
+  margin-bottom: 30rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #778899;
+}
+
+.changeBox {
+  height: 60rpx;
+  line-height: 100rpx;
+  top: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .picker {
@@ -63,15 +78,16 @@
   display: inline-block;
 }
 
-.chooseBox{
- height: 100rpx;
+.chooseBox {
+  height: 100rpx;
 
- display: inline-block;
+  display: inline-block;
 }
 
 .table {
   border: 0px solid darkgray;
 }
+
 .tr {
   display: flex;
   width: 100%;
@@ -79,17 +95,21 @@
   height: 3rem;
   align-items: center;
 }
+
 .td {
-    width:40%;
-    justify-content: center;
-    text-align: center;
+  width: 40%;
+  justify-content: center;
+  text-align: center;
 }
-.bg-w{
+
+.bg-w {
   background: snow;
 }
-.bg-g{
+
+.bg-g {
   background: #E6F3F9;
 }
+
 .th {
   width: 40%;
   justify-content: center;
@@ -100,9 +120,9 @@
   align-items: center;
 }
 
-.card{
-  margin-bottom:12px;
-   margin-left: 14rpx;
-   margin-right: 14rpx;
-   margin-top: 35rpx;
+.card {
+  margin-bottom: 12px;
+  margin-left: 14rpx;
+  margin-right: 14rpx;
+  margin-top: 35rpx;
 }

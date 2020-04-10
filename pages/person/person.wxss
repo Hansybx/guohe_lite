@@ -1,0 +1,42 @@
+@import '../../lib/wxss/weui.wxss';
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx 40rpx 20rpx 40rpx;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.header-nickname {
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: right;
+  font-size: 30rpx;
+  color: #999;
+}
+
+.card-item-font {
+  font-size: 30rpx;
+  float: left;
+}
+
+page {
+  background-color: #f8f8f8;
+  background-position: center;
+  background-size: 100%;
+}

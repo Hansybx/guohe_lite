@@ -1,9 +1,9 @@
 // pages/school/library/library.js
 
-var Constant = require('../../../utils/constant.js')
-var HttpUtils = require('../../../utils/http-utils.js')
-var toastr = require('../../../utils/toastr-wxapp.js');
-var wxCharts = require('../../../utils/wxcharts-min.js');
+var Constant = require('../../../lib/js/constant')
+var HttpUtils = require('../../../lib/js/http-utils.js')
+var toastr = require('../../../lib/js/toastr-wxapp.js');
+var wxCharts = require('../../../lib/js/wxcharts-min.js');
 
 
 Page({

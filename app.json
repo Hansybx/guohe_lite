@@ -1,26 +1,31 @@
 {
   "pages": [
+
+
     "pages/index/index",
+
     "pages/login/login",
-    "pages/logs/logs",
-    "pages/core/sport/sport",
+
+    "pages/kb/kb",
+
+    "pages/person/person",
+    "pages/person/about/about",
+    "pages/person/feedback/feedback",
+    "pages/person/log/log",
+
+    "pages/core/bus/bus",
+    "pages/core/classroom/classroom",
     "pages/core/library/library",
     "pages/core/library/book/book",
-    "pages/core/classroom/classroom",
-    "pages/core/person/person",
-    "pages/core/person/about/about",
-    "pages/core/community/community",
-    "pages/core/score/score",
-    "pages/core/person/feedback/feedback",
-    "pages/core/person/switch/switch",
-    "pages/core/person/log/log",
-    "pages/core/bus/bus",
-    "pages/core/prize/index/index",
-    "pages/core/prize/detail/detail",
-    "pages/core/kb/kb",
     "pages/core/love/love",
     "pages/core/news/news",
-    "pages/core/xs/xs"
+    "pages/core/score/score",
+    "pages/core/sport/sport",
+    "pages/core/xs/xs",
+    "pages/core/xs/cart/cart",
+    "pages/core/xs/detail/detail",
+    "pages/core/xs/orders/orders"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,26 +43,31 @@
     "selectedColor": "#000000",
     "borderStyle": "white",
     "backgroundColor": "#FFFFFF",
-    "list": [
-      {
-        "pagePath": "pages/core/kb/kb",
+    "list": [{
+        "pagePath": "pages/kb/kb",
         "text": "课表",
-        "iconPath": "images/index/daily.png",
-        "selectedIconPath": "images/index/daily_click.png"
+        "iconPath": "/images/index/tab/daily.png",
+        "selectedIconPath": "/images/index/tab/daily_click.png"
       },
       {
         "pagePath": "pages/index/index",
         "text": "发现",
-        "iconPath": "images/index/sun.png",
-        "selectedIconPath": "images/index/sun_click.png"
+        "iconPath": "/images/index/tab/sun.png",
+        "selectedIconPath": "/images/index/tab/sun_click.png"
       },
       {
-        "pagePath": "pages/core/person/person",
+        "pagePath": "pages/person/person",
         "text": "我",
-        "iconPath": "images/index/i.png",
-        "selectedIconPath": "images/index/i_click.png"
+        "iconPath": "/images/index/tab/i.png",
+        "selectedIconPath": "/images/index/tab/i_click.png"
       }
     ]
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx8abaf00ee8c3202e"
+  ],
+  "usingComponents": {
+    "mp-toptips": "./lib/components/toptips/toptips"
+  }
 }

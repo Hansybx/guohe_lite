@@ -1,0 +1,20 @@
+<!--pages/core/xs/orders/orders.wxml-->
+<view class="main">
+	<view class="order-address">
+		地址: <view>{{address}}</view>
+	</view>
+
+	<view class="orders-box">
+		<view wx:for="{{orders}}" wx:key="index" class="orders-list">
+			<image class="orders-thumb" src="{{item.image}}" mode="aspectFill"></image>
+			<view class="orders-pro-name">{{item.title}}</view>
+			<view class="orders-pro-price">￥{{item.price}}</view>
+			<view class="orders-count-num">×{{item.num}}</view>
+		</view>
+	</view>
+
+	<view class="orders-footer">
+		<view class="orders-footer-total">付款合计：￥{{totalPrice}}</view>
+		<view class="orders-footer-btn" bindtap="submitOrder">提交订单</view>
+	</view>
+</view>

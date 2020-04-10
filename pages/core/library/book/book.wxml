@@ -1,6 +1,6 @@
 <!--pages/core/library/book/book.wxml-->
 <view class='logo' style='margin-bottom:20px'>
-  <image class='logo' src='/images/book.png'></image>
+  <image class='logo' src='/images/logos/book.png'></image>
 </view>
 
 <view class='top'>书中自有颜如玉。</view>

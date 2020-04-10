@@ -1,0 +1,78 @@
+/* pages/core/person/about/about.wxss */
+.logo {
+  width: 150rpx;
+  height: 150rpx;
+  animation: myfirst 5s;
+  margin: 40rpx auto;
+  display: block;
+  animation-iteration-count: 100;
+  animation-timing-function: linear;
+  animation-duration: 1.8s;
+}
+
+.public {
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 25rpx;
+  margin-top: 5rpx;
+  display: block;
+}
+
+.public_text {
+  margin: 25rpx;
+  margin-top: 5rpx;
+  margin-left: 50rpx;
+  margin-bottom: 55rpx;
+  font-size: 25rpx;
+  text-align: left;
+  color: #778899;
+}
+
+.edition {
+
+  margin: 40rpx auto;
+  display: block;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.top {
+  margin: 25rpx;
+  margin-bottom: 100rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: #778899;
+}
+
+.text {
+  margin: 25rpx;
+  margin-top: 5rpx;
+  margin-bottom: 10rpx;
+  font-size: 30rpx;
+  text-align: left;
+  color: #778899;
+}
+
+.text_title {
+  margin: 30rpx;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+  text-align: left;
+}
+
+page {
+  /* background-color: #f8f8f8; */
+  background-color: #fff;
+  background-position: center;
+  background-size: 100%;
+  text-align: center;
+}
+
+.text_footer {
+  font-size: 30rpx;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  margin-bottom: 25rpx;
+}

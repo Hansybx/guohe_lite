@@ -1,31 +1,30 @@
-
 <view class="wrapper">
-  <view class="loginform">
-  <form bindsubmit="formSubmit">
-    <view id="owl-login">
-      <image class="head" src="../../images/owl-login.png"></image>
-      <view class="hand {{inputPassword ? 'hand-password' : ''}}"></view>
-      <view class="hand hand-r {{inputPassword ? 'hand-r-password' : ''}}"></view>
-      <view class="arms">
-        <image class="arm {{inputPassword ? 'arm-password' : ''}}" src="../../images/owl-login-arm.png"></image>
-        <image class="arm arm-r {{inputPassword ? 'arm-r-password' : ''}}" src="../../images/owl-login-arm.png"></image>
-      </view>
-    </view>
-    <view class="control-group">
-      <view class="control">
-        <input bindfocus="username" type="number" name='username'  placeholder="账号" placeholder-style="margin-left:5rpx;font-size:0.8rem;color:white" ></input>
-      </view>
-      <view class="control">
-        <input type="password" name='password'  bindfocus="pwdFocus" placeholder="密码"  placeholder-style="margin-left:5rpx;font-size:0.8rem;color:white"></input>
-      </view>
-      <button class='login-btn' disabled="{{isLoading}}" loading="{{isLoading}}" type="primary"  form-type="submit">登录</button>
-    </view>
-    </form>
-  </view>
+	<view class="loginform">
+		<form bindsubmit="formSubmit">
+			<view id="owl-login">
+				<image class="head" src="../../images/owl-login.png"></image>
+				<view class="hand {{inputPassword ? 'hand-password' : ''}}"></view>
+				<view class="hand hand-r {{inputPassword ? 'hand-r-password' : ''}}"></view>
+				<view class="arms">
+					<image class="arm {{inputPassword ? 'arm-password' : ''}}" src="../../images/owl-login-arm.png"></image>
+					<image class="arm arm-r {{inputPassword ? 'arm-r-password' : ''}}" src="../../images/owl-login-arm.png"></image>
+				</view>
+			</view>
+			<view class="control-group">
+				<view class="control">
+					<input bindfocus="username" type="number" name='username' placeholder="账号" placeholder-style="margin-left:5rpx;font-size:0.8rem;color:white"></input>
+				</view>
+				<view class="control">
+					<input type="password" name='password' bindfocus="pwdFocus" placeholder="密码" placeholder-style="margin-left:5rpx;font-size:0.8rem;color:white"></input>
+				</view>
+				<button class='login-btn' disabled="{{isLoading}}" loading="{{isLoading}}" type="primary" form-type="submit">登录</button>
+			</view>
+		</form>
+	</view>
 </view>
 <view class="weui-footer myfooter">
-            <!-- <view class="weui-footer__links">
+	<!-- <view class="weui-footer__links">
                 <navigator url="https://guohe3.com" class="weui-footer__link">底部链接</navigator>
             </view> -->
-            <view class="weui-footer__text">Copyright © 2019-2020 stu.guohe3.com</view>
+	<view class="weui-footer__text">Copyright © 2020-2021 www.guohe3.cn</view>
 </view>
