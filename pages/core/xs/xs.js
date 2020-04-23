@@ -19,5 +19,10 @@ Page({
         console.log("跳转成功");
       }
     })
+  },
+  
+  // 分享首页
+  onShareAppMessage: function () {
+
   }
 })

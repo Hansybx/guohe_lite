@@ -10,17 +10,17 @@ Page({
     totalCount: 0, //商品总数
     orders: [],
     address: '',
-    contact:''
+    contact: ''
   },
 
   onLoad: function (options) {
     var queryBean = JSON.parse(decodeURIComponent(options.carts));
     var address = JSON.parse(decodeURIComponent(options.address));
-    var contact=JSON.parse(decodeURIComponent(options.contact));
+    var contact = JSON.parse(decodeURIComponent(options.contact));
     this.setData({
       orders: queryBean,
       address: address,
-      contact:contact
+      contact: contact
     })
 
   },
@@ -45,7 +45,7 @@ Page({
       totalCount: count
     })
   },
-  
+
   // 提交订单
   submitOrder: function () {
 
@@ -58,6 +58,7 @@ Page({
     var price = this.data.totalPrice;
     var count = this.data.totalCount;
     var address = this.data.address;
+    var contact = this.data.contact;
 
     var books = []
     for (let cart of carts) {
@@ -76,6 +77,7 @@ Page({
     param['address'] = address
     param['count'] = count
     param['price'] = price
+    param['contact'] = contact
     param['book_list'] = books
 
     var jsonText = JSON.stringify(param);

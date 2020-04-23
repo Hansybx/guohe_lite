@@ -51,11 +51,11 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.onLoad()
   },
-  onLoad: function() {
+  onLoad: function () {
     // Bmob.initialize("9e77d93cb20fc1422dcc80b7084f65f6", "12e3371ba93881c4f71043c7ab7740c7");
     Bmob.initialize("9c43235b30ad4ec18c07d28b4f46e388", "d2550773fba714e21d4746cd1c9b7541");
 
@@ -78,11 +78,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     var that = this
     wx.getStorage({
       key: 'music_flag',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           music_flag: res.data
         })
@@ -90,7 +90,7 @@ Page({
     })
     wx.getStorage({
       key: 'news_flag',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           news_flag: res.data
         })
@@ -100,7 +100,7 @@ Page({
     this.initTodayKb()
   },
 
-  tap: function(e) {
+  tap: function (e) {
     for (var i = 0; i < order.length; ++i) {
       if (order[i] === this.data.toView) {
         this.setData({
@@ -110,14 +110,14 @@ Page({
       }
     }
   },
-  tapMove: function(e) {
+  tapMove: function (e) {
     this.setData({
       scrollTop: this.data.scrollTop + 10
     })
   },
 
   //获取云端推送消息
-  getMess: function() {
+  getMess: function () {
     var that = this
     const query = Bmob.Query("push_message");
     query.find().then(res => {
@@ -129,9 +129,9 @@ Page({
   },
 
   //获取日知录信息
-  getOneContent: function() {
+  getOneContent: function () {
     var that = this
-    util.getOneContent(function(data) {
+    util.getOneContent(function (data) {
       var data = data.data
       that.setData({
         oneImg: data.img_url,
@@ -144,7 +144,7 @@ Page({
   },
 
   //获取校历信息
-  getXiaoli: function() {
+  getXiaoli: function () {
     try {
       //查看是否已经登录
       var account = wx.getStorageSync('account')
@@ -177,7 +177,7 @@ Page({
   },
 
   //获取校历成功的回掉函数
-  getXiaoliSuccess: function(res) {
+  getXiaoliSuccess: function (res) {
     if (res.data.code == 500) {
       wx.showToast({
         title: '教务系统异常',
@@ -206,12 +206,12 @@ Page({
   },
 
   //获取校历失败的回掉函数
-  getXiaoliFail: function(e) {
+  getXiaoliFail: function (e) {
     console.log('获取校历失败的回掉函数：' + e)
   },
 
   //点击首页的item跳转到相应的页面
-  navigateTo: function(event) {
+  navigateTo: function (event) {
     var info = event.currentTarget.dataset.info
     var id = info.id
     var enable = info.enable
@@ -232,7 +232,7 @@ Page({
   },
 
   //初始化首页头部内容
-  initHeader: function() {
+  initHeader: function () {
     var that = this
     const query = Bmob.Query("header");
     var headers = new Array();
@@ -313,7 +313,7 @@ Page({
   },
 
   //点击图片弹出大图
-  imgPreview: function() {
+  imgPreview: function () {
     var imgUrl = this.data.oneImg
     var urls = []
     if (imgUrl) {
@@ -325,15 +325,20 @@ Page({
   },
 
   //显示完整课表
-  showAllKb: function() {
+  showAllKb: function () {
     wx.switchTab({
       url: '../kb/kb',
     })
   },
 
   // 显示活动信息
-  showActInfo: function(event) {
+  showActInfo: function (event) {
     var info = event.currentTarget.dataset.info
     console.log(info)
+  },
+
+  // 分享首页
+  onShareAppMessage: function () {
+
   }
 })
