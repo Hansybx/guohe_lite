@@ -79,24 +79,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
-    wx.getStorage({
-      key: 'music_flag',
-      success: function (res) {
-        that.setData({
-          music_flag: res.data
-        })
-      },
-    })
-    wx.getStorage({
-      key: 'news_flag',
-      success: function (res) {
-        that.setData({
-          news_flag: res.data
-        })
-      },
-    })
-
     this.initTodayKb()
   },
 

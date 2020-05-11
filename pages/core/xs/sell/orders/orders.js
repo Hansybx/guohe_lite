@@ -71,25 +71,60 @@ Page({
     }
 
 
-    var account = wx.getStorageSync('account');
-    var param = new Object();
-    param['uid'] = account.username
-    param['address'] = address
-    param['count'] = count
-    param['price'] = price
-    param['contact'] = contact
-    param['book_list'] = books
+    try {
+      var account = wx.getStorageSync('account');
+      if (account) {
+        var param = new Object();
+        param['uid'] = account.username
+        param['address'] = address
+        param['count'] = count
+        param['price'] = price
+        param['contact'] = contact
+        param['book_list'] = books
 
-    var jsonText = JSON.stringify(param);
+        var jsonText = JSON.stringify(param);
 
-    //发送订单请求
-    HttpUtils._post_json(
-      Constant.XS_ORDER_SELL,
-      jsonText,
-      //两个回调函数
-      this.orderSellSuccess,
-      this.orderSellFail
-    )
+        //发送订单请求
+        HttpUtils._post_json(
+          Constant.XS_ORDER_SELL,
+          jsonText,
+          //两个回调函数
+          this.orderSellSuccess,
+          this.orderSellFail
+        )
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请先用教务系统账号登录',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
+    } catch (e) {
+      wx.showModal({
+        title: '提示',
+        content: '请先用教务系统账号登录',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+
   },
 
   orderSellSuccess: function (res) {

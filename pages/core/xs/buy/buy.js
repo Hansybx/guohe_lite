@@ -28,15 +28,13 @@ Page({
   },
   submit() {
     if (this.data.content != '' && this.data.contact != '') {
-      var that = this
-      wx.getStorage({
-        key: 'account',
-        success: function (res) {
-
+      try {
+        var account = wx.getStorageSync('account');
+        if (account) {
           var param = {
-            'name': that.data.name,
-            'contact': that.data.contact,
-            'location': that.data.location,
+            'name': this.data.name,
+            'contact': this.data.contact,
+            'location': this.data.location,
             'uid': res.data.username,
             'origin': '1'
           }
@@ -48,11 +46,41 @@ Page({
             Constant.XS_ORDER_BUY,
             jsonText,
             //两个回调函数
-            that.orderBuySuccess,
-            that.orderBuyFail
+            this.orderBuySuccess,
+            this.orderBuyFail
           )
-        },
-      })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '请先用教务系统账号登录',
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+                wx.navigateTo({
+                  url: '/pages/login/login',
+                })
+              } else if (res.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+        }
+      } catch (e) {
+        wx.showModal({
+          title: '提示',
+          content: '请先用教务系统账号登录',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
     } else {
       wx.showToast({
         title: '数据不能为空',

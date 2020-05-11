@@ -20,9 +20,4 @@ Page({
       }
     })
   },
-  
-  // 分享首页
-  onShareAppMessage: function () {
-
-  }
 })
