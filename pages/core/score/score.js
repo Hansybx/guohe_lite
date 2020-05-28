@@ -67,11 +67,20 @@ Page({
           this.getScoreFail
         )
       } else {
-        //没有数据缓存信息
-        toastr.error({
-          title: '系统异常',
-          duration: 1000,
-        });
+        wx.showModal({
+          title: '提示',
+          content: '请先用教务系统账号登录',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
       }
     } catch (e) {
       // Do something when catch error
@@ -156,11 +165,19 @@ Page({
           this.getGPAFail
         )
       } else {
-        //没有数据缓存信息
-        wx.showToast({
-          title: '系统异常',
-          icon: 'loading',
-          duration: 2000
+        wx.showModal({
+          title: '提示',
+          content: '请先用教务系统账号登录',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
         })
       }
     } catch (e) {

@@ -1,7 +1,8 @@
 <!--pages/core/xs/orders/orders.wxml-->
 <view class="main">
-	<view class="order-address">
-		地址: <view>{{address}}</view>
+	<view class="order-text">
+		<view>地址:{{address}}</view>
+		<view>联系方式：{{contact}}</view>
 	</view>
 
 	<view class="orders-box">
@@ -14,7 +15,7 @@
 	</view>
 
 	<view class="orders-footer">
-		<view class="orders-footer-total">付款合计：￥{{totalPrice}}</view>
+		<view class="orders-footer-total">合计估价：￥{{totalPrice}}</view>
 		<view class="orders-footer-btn" bindtap="submitOrder">提交订单</view>
 	</view>
 </view>

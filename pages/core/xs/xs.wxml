@@ -1,44 +1,34 @@
 <!--pages/core/xs/xs.wxml-->
 
+<view class="view">
+	<view class="bg">
+		<image class="logo" mode="aspectFit" src="../../../images/logos/xslogo.png"></image>
+	</view>
 
-<view class='logo' style='margin-bottom:20px'>
-	<image class='logo' src='/images/index/core/xs.png'></image>
+	<view class="intro">
+		<view class="intro-text-title">『木洺书屋』</view>
+
+		<view class="intro-text-content">愿为你提供更优质的校园二手书服务</view>
+
+		<!-- <view class="intro-text-content">如果您有创业梦想，有兼职需要</view> -->
+		<view class="intro-text-content">木洺团队欢迎您的加入</view>
+
+		<view class="intro-text-content">联系方式：张振翔 18852899026</view>
+		<view class="intro-text-content"><text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;吴&nbsp;&nbsp;洋 &nbsp;18852894381</text></view>
+		<view class="intro-text-content"><text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QQ 群&nbsp;&nbsp;&nbsp;140697768</text></view>
+
+	</view>
+
+	<view class="bottom">
+		<view class="divLine"></view>
+
+		<view class="btns">
+			<!-- <button bindtap='navigateToBuy' class="btn-grey" >🙏我要买书</button>
+			<button bindtap='navigateToSell' class="btn-blue" >🙋我要卖书</button> -->
+			<button bindtap='navigateToBuy' class="btn-grey">我要买书</button>
+			<button bindtap='navigateToSell' class="btn-blue">我要卖书</button>
+		</view>
+	</view>
+
+
 </view>
-
-<view class='top'>我要买书🙏</view>
-
-<view class='card'>
-	<view class="weui-cells__title" style="text-align: left;font-size:25rpx;">书名</view>
-	<view class="weui-cells weui-cells_after-title">
-		<view class="weui-cell">
-			<view class="weui-cell__bd">
-				<textarea value="{{name}}" bindinput='nameInput' class="weui-textarea" placeholder="在此输入书名，如果要定下学期的书，记得标注学期和专业哦～" style="height:80rpx;font-size:28rpx;text-align: left;" />
-				</view>
-            </view>
-        </view>
-</view>
-
-<view class='card'>
-	<view class="weui-cells__title" style="text-align: left;font-size:25rpx;">宿舍号</view>
-	<view class="weui-cells weui-cells_after-title">
-		<view class="weui-cell">
-			<view class="weui-cell__bd">
-				<textarea bindinput='locationInput' class="weui-textarea" placeholder="在此输入宿舍号" style="height:80rpx;font-size:28rpx;text-align: left;" />
-				</view>
-            </view>
-        </view>
-</view>
-
-<view class='card'>
-  <view class="weui-cells__title" style="text-align: left;font-size:25rpx;">联系方式</view>
-        <view class="weui-cells weui-cells_after-title">
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__bd">
-                    <input bindinput='contactInput' class="weui-input" placeholder="QQ \微信，方便我们联系到你来更好解决问题" style="height:60rpx;font-size:28rpx;text-align: left;" />
-                </view>
-            </view>
-        </view>
-</view>
-
-<button bindtap='submit' class="weui-btn" type="primary" plain="true">添加订单</button>
-<button bindtap='navigateToSell' class="weui-btn" type="primary" plain="true">我要卖书</button>

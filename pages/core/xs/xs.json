@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "木洺书屋"
 }

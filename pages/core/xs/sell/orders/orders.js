@@ -1,7 +1,7 @@
 // pages/core/xs/orders/orders.js
 
-var HttpUtils = require('../../../../lib/js/http-utils');
-var Constant = require('../../../../lib/js/constant');
+var HttpUtils = require('../../../../../lib/js/http-utils');
+var Constant = require('../../../../../lib/js/constant');
 
 
 Page({
@@ -9,34 +9,24 @@ Page({
     totalPrice: 0,
     totalCount: 0, //商品总数
     orders: [],
-    address: ''
+    address: '',
+    contact: ''
   },
 
   onLoad: function (options) {
     var queryBean = JSON.parse(decodeURIComponent(options.carts));
     var address = JSON.parse(decodeURIComponent(options.address));
+    var contact = JSON.parse(decodeURIComponent(options.contact));
     this.setData({
       orders: queryBean,
-      address: address
+      address: address,
+      contact: contact
     })
 
   },
 
   onReady() {
     this.getTotalPrice();
-  },
-
-  onShow: function () {
-    const self = this;
-    wx.getStorage({
-      key: 'address',
-      success(res) {
-        self.setData({
-          address: res.data,
-          hasAddress: true
-        })
-      }
-    })
   },
 
   /**
@@ -55,7 +45,7 @@ Page({
       totalCount: count
     })
   },
-  
+
   // 提交订单
   submitOrder: function () {
 
@@ -68,11 +58,10 @@ Page({
     var price = this.data.totalPrice;
     var count = this.data.totalCount;
     var address = this.data.address;
+    var contact = this.data.contact;
 
     var books = []
-    console.log(carts)
     for (let cart of carts) {
-      console.log(cart)
       var book = new Object();
       book['bid'] = cart['id']
       book['bname'] = cart['title']
@@ -81,33 +70,65 @@ Page({
       books.push(book)
     }
 
-    console.log(books)
 
-    var account = wx.getStorageSync('account');
-    var param = new Object();
-    param['uid'] = account.username
-    param['address'] = address
-    param['count'] = count
-    param['price'] = price
-    param['book_list'] = books
+    try {
+      var account = wx.getStorageSync('account');
+      if (account) {
+        var param = new Object();
+        param['uid'] = account.username
+        param['address'] = address
+        param['count'] = count
+        param['price'] = price
+        param['contact'] = contact
+        param['book_list'] = books
 
-    var jsonText = JSON.stringify(param);
-    console.log(jsonText)
+        var jsonText = JSON.stringify(param);
 
-    //发送订单请求
-    HttpUtils._post_json(
-      Constant.XS_ORDER_SELL,
-      jsonText,
-      //两个回调函数
-      this.orderSellSuccess,
-      this.orderSellFail
-    )
+        //发送订单请求
+        HttpUtils._post_json(
+          Constant.XS_ORDER_SELL,
+          jsonText,
+          //两个回调函数
+          this.orderSellSuccess,
+          this.orderSellFail
+        )
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '请先用教务系统账号登录',
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }
+    } catch (e) {
+      wx.showModal({
+        title: '提示',
+        content: '请先用教务系统账号登录',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+            wx.navigateTo({
+              url: '/pages/login/login',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+    }
+
   },
 
   orderSellSuccess: function (res) {
     wx.hideLoading()
-
-    console.log(res)
 
     if (res.data.code != 200) {
       wx.showToast({

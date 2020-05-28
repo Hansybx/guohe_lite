@@ -2,8 +2,6 @@
 
 Page({
   data: {
-    // order_price: 0,
-    // book_count: 0,
     showMore: false,
     orderList: [],
     order: {}
@@ -11,7 +9,6 @@ Page({
   onLoad: function (options) {
     var queryBean = JSON.parse(decodeURIComponent(options.carts));
     var info = JSON.parse(options.info);
-    console.log(info)
     this.setData({
       orderList: queryBean,
       order: info

@@ -2,8 +2,12 @@
 <view class="main">
 
 	<view wx:if="{{hasList}}">
-		<view class="order-address">
-			<textarea bindinput='addressInput' placeholder="输入你的地址" style="height:100rpx;font-size:28rpx;text-align: left;" />
+		<view class="order-input">
+			<textarea bindinput='addressInput' placeholder="输入你的地址" style="height:60rpx;font-size:28rpx;text-align: left;" />
+			</view>
+
+		<view class="order-input">
+			<textarea bindinput='contactInput' placeholder="输入你的联系方式" style="height:60rpx;font-size:28rpx;text-align: left;" />
 			</view>
 		<view class="cart-box">
 			<view class="cart-list" wx:for="{{carts}}" wx:key="index">
@@ -13,7 +17,7 @@
 				<text class="cart-pro-name">{{item.title}}</text>
 				<text class="cart-pro-price">￥{{item.price}}</text>
 				<view class="cart-count-box">
-					<text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}">-</text>
+					<text class="cart-count-down" bindtap="minusCount"  data-index="{{index}}">-</text>
 					<text class="cart-count-num">{{item.num}}</text>
 					<text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
 				</view>

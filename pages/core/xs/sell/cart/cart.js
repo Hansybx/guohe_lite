@@ -1,7 +1,7 @@
 // pages/core/xs/mall/mall.js
 
-var HttpUtils = require('../../../../lib/js/http-utils');
-var Constant = require('../../../../lib/js/constant');
+var HttpUtils = require('../../../../../lib/js/http-utils');
+var Constant = require('../../../../../lib/js/constant');
 
 var Carts = [];
 
@@ -11,10 +11,8 @@ Page({
     hasList: false, // 列表是否有数据
     totalPrice: 0, // 总价，初始为0
     selectAllStatus: true, // 全选状态，默认全选
-    obj: {
-      name: "hello"
-    },
-    address: ''
+    address: '',
+    contact: ''
 
   },
   onShow() {
@@ -91,7 +89,6 @@ Page({
    */
   minusCount(e) {
     const index = e.currentTarget.dataset.index;
-    const obj = e.currentTarget.dataset.obj;
     let carts = this.data.carts;
     let num = carts[index].num;
     if (num <= 1) {
@@ -130,7 +127,6 @@ Page({
     var _this = this;
     wx.scanCode({ //扫描API
       success: function (res) {
-        console.log(res); //输出回调信息
         _this.verifyISBN(res.result);
       }
     })
@@ -199,8 +195,9 @@ Page({
     // 使用encodeURIComponent是为了防止数据量太大
     var queryBean = encodeURIComponent(JSON.stringify(this.data.carts));
     var address = encodeURIComponent(JSON.stringify(this.data.address));
+    var contact = encodeURIComponent(JSON.stringify(this.data.contact));
     wx.navigateTo({
-      url: '../orders/orders?carts=' + queryBean + "&address=" + address,
+      url: '../orders/orders?carts=' + queryBean + "&address=" + address + "&contact=" + contact,
     })
   },
 
@@ -210,6 +207,15 @@ Page({
   addressInput: function (e) {
     this.setData({
       address: e.detail.value
+    })
+  },
+
+  /**
+   * 联系方式绑定事件
+   */
+  contactInput: function (e) {
+    this.setData({
+      contact: e.detail.value
     })
   },
 
